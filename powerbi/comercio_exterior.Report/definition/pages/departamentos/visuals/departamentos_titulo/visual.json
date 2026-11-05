@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "departamentos_titulo",
+  "position": {
+    "x": 24.0,
+    "y": 10.0,
+    "z": 0,
+    "height": 44.0,
+    "width": 800.0,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "¿Desde qué departamentos sale lo que se exporta?",
+                    "textStyle": {
+                      "fontSize": "20pt",
+                      "color": "#1f2725",
+                      "fontWeight": "bold"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

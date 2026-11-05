@@ -1,0 +1,24 @@
+model Model
+	culture: es-CO
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: es-CO
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["CarpetaDatos","destinos","departamentos","logistica","departamentos_anual","pais_dudoso_anual","dim_pais","dim_departamento","dim_capitulo","dim_via","cuadre_boletin"]
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+ref table destinos
+ref table departamentos
+ref table logistica
+ref table departamentos_anual
+ref table pais_dudoso_anual
+ref table dim_pais
+ref table dim_departamento
+ref table dim_capitulo
+ref table dim_via
+ref table cuadre_boletin
+ref table Calendario
+ref table Medidas

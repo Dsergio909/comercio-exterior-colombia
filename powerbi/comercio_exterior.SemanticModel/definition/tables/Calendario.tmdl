@@ -1,0 +1,68 @@
+/// Calendario de enero de 2019 al último mes con datos.
+table Calendario
+	lineageTag: f53eb299-4d2e-5701-b7c0-55163018d1c9
+	dataCategory: Time
+
+	column Fecha
+		isKey
+		formatString: dd/mm/yyyy
+		lineageTag: 4a4acad3-557a-5d64-88ea-3762c78f997f
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Fecha]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Año
+		formatString: 0
+		lineageTag: e3de7b8e-ea28-59c9-8e1a-956dbf2cbb54
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Año]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Mes número'
+		formatString: 0
+		isHidden
+		lineageTag: fede624a-9e35-5024-97af-e2de7c2c20b0
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Mes número]
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Primer día del mes.
+	column Mes
+		formatString: mmm yyyy
+		lineageTag: 90119c75-907e-5834-b0bc-c1ee57c670c4
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Mes]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Nombre del mes'
+		lineageTag: 7ee54074-e999-5a0f-bca3-c3e2877e072d
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Nombre del mes]
+		sortByColumn: 'Mes número'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Calendario = calculated
+		mode: import
+		source =
+				VAR Fin = EOMONTH ( MAX ( logistica[periodo] ), 0 )
+				VAR Base = CALENDAR ( DATE ( 2019, 1, 1 ), Fin )
+				RETURN
+				    ADDCOLUMNS (
+				        SELECTCOLUMNS ( Base, "Fecha", [Date] ),
+				        "Año", YEAR ( [Fecha] ),
+				        "Mes número", MONTH ( [Fecha] ),
+				        "Mes", DATE ( YEAR ( [Fecha] ), MONTH ( [Fecha] ), 1 ),
+				        "Nombre del mes", FORMAT ( [Fecha], "mmm", "es-CO" )
+				    )
+
+	annotation PBI_ResultType = Table

@@ -1,0 +1,184 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "destinos_tabla",
+  "position": {
+    "x": 560.0,
+    "y": 220.0,
+    "z": 6,
+    "height": 464.0,
+    "width": 696.0,
+    "tabOrder": 6
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "Puesto del destino · 12 primeros destinos"
+                }
+              },
+              "queryRef": "Medidas.Puesto del destino · 12 primeros destinos",
+              "nativeQueryRef": "Puesto del destino · 12 primeros destinos",
+              "displayName": "#"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_pais"
+                    }
+                  },
+                  "Property": "País"
+                }
+              },
+              "queryRef": "dim_pais.País",
+              "nativeQueryRef": "País"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "Exportaciones por destino (MUSD) · 12 primeros destinos"
+                }
+              },
+              "queryRef": "Medidas.Exportaciones por destino (MUSD) · 12 primeros destinos",
+              "nativeQueryRef": "Exportaciones por destino (MUSD) · 12 primeros destinos",
+              "displayName": "MUSD"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "Participación por destino % · 12 primeros destinos"
+                }
+              },
+              "queryRef": "Medidas.Participación por destino % · 12 primeros destinos",
+              "nativeQueryRef": "Participación por destino % · 12 primeros destinos",
+              "displayName": "Peso"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "Variación anual por destino % · 12 primeros destinos"
+                }
+              },
+              "queryRef": "Medidas.Variación anual por destino % · 12 primeros destinos",
+              "nativeQueryRef": "Variación anual por destino % · 12 primeros destinos",
+              "displayName": "Var. anual"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Medidas"
+                  }
+                },
+                "Property": "Exportaciones por destino (MUSD) · 12 primeros destinos"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "total": [
+        {
+          "properties": {
+            "totals": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Los 12 primeros destinos (la variación aparece al elegir un año)'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "11D"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#1f2725'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

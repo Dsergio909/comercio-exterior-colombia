@@ -1,0 +1,32 @@
+/// Modo de transporte. Desde 2022 la codificación del DANE cambia.
+table dim_via
+	lineageTag: 61545726-79ac-5b28-9668-bf7f2e6c14a4
+
+	column codigo
+		dataType: string
+		isHidden
+		lineageTag: a96f193f-9662-580a-b7a0-8e59df215f49
+		summarizeBy: none
+		sourceColumn: codigo
+
+		annotation SummarizationSetBy = Automatic
+
+	column Vía
+		dataType: string
+		lineageTag: 60bb7214-ff00-5016-901a-89a99a8ccad5
+		summarizeBy: none
+		sourceColumn: via
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_via = m
+		mode: import
+		source =
+				let
+				    Origen = Csv.Document(File.Contents(CarpetaDatos & "referencia\vias_transporte.csv"), [Delimiter = ",", Columns = 2, Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Encabezados = Table.PromoteHeaders(Origen, [PromoteAllScalars = true]),
+				    Resultado = Table.TransformColumnTypes(Encabezados, {{"codigo", type text}, {"via", type text}}, "en-US")
+				in
+				    Resultado
+
+	annotation PBI_ResultType = Table

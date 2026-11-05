@@ -1,0 +1,20 @@
+flujo,periodo,tipo,oficial_musd,calculado_musd,diferencia_pct,resultado,fuente
+expo,2019,anual,39501.7,39489.2,-0.03,ok,https://www.dane.gov.co/files/investigaciones/boletines/exportaciones/bol_exp_dic19.pdf
+expo,2020,anual,31056.5,31055.8,-0.0,ok,https://www.dane.gov.co/files/investigaciones/boletines/exportaciones/bol_exp_dic20.pdf
+expo,2022,anual,57115.4,56910.1,-0.36,ok,https://www.dane.gov.co/files/investigaciones/boletines/exportaciones/boletin_exportaciones_dic22.pdf
+expo,2023,anual,49542.9,49769.1,0.46,ok,https://www.dane.gov.co/files/operaciones/EXPORTACIONES/bol-EXPORTACIONES-dic2023.pdf
+expo,2023-12,mes,4447.7,4447.7,0.0,ok,https://www.dane.gov.co/files/operaciones/EXPORTACIONES/bol-EXPORTACIONES-dic2025.pdf
+expo,2024,anual,49552.0,49556.5,0.01,ok,https://www.dane.gov.co/files/operaciones/EXPORTACIONES/bol-EXPORTACIONES-dic2024.pdf
+expo,2024-09,mes,4158.7,4158.7,-0.0,ok,https://www.dane.gov.co/files/operaciones/EXPORTACIONES/bol-EXPORTACIONES-sep2026.pdf
+expo,2024-12,mes,4480.5,4480.5,0.0,ok,https://www.dane.gov.co/files/operaciones/EXPORTACIONES/bol-EXPORTACIONES-dic2025.pdf
+expo,2025,anual,50199.9,50201.5,0.0,ok,https://www.dane.gov.co/files/operaciones/EXPORTACIONES/bol-EXPORTACIONES-dic2025.pdf
+expo,2025-09,mes,4650.3,4650.3,0.0,ok,https://www.dane.gov.co/files/operaciones/EXPORTACIONES/bol-EXPORTACIONES-sep2026.pdf
+expo,2025-12,mes,4540.5,4545.2,0.1,ok,https://www.dane.gov.co/files/operaciones/EXPORTACIONES/bol-EXPORTACIONES-dic2025.pdf
+expo,2026-01_2026-09,acumulado,42301.8,42301.8,-0.0,ok,https://www.dane.gov.co/files/operaciones/EXPORTACIONES/bol-EXPORTACIONES-sep2026.pdf
+expo,2026-09,mes,5410.7,5410.7,0.0,ok,https://www.dane.gov.co/files/operaciones/EXPORTACIONES/bol-EXPORTACIONES-sep2026.pdf
+impo,2024,anual,64104.7,,,sin datos,https://www.dane.gov.co/files/operaciones/IMP/bol-IMP-dic2024.pdf
+impo,2024-08,mes,5532.9,,,sin datos,https://www.dane.gov.co/files/operaciones/IMP/bol-IMP-ago2026.pdf
+impo,2025,anual,70502.1,,,sin datos,https://www.dane.gov.co/files/operaciones/IMP/bol-IMP-dic2025.pdf
+impo,2025-08,mes,5850.4,,,sin datos,https://www.dane.gov.co/files/operaciones/IMP/bol-IMP-ago2026.pdf
+impo,2026-01_2026-08,acumulado,53746.4,,,sin datos,https://www.dane.gov.co/files/operaciones/IMP/bol-IMP-ago2026.pdf
+impo,2026-08,mes,7702.5,,,sin datos,https://www.dane.gov.co/files/operaciones/IMP/bol-IMP-ago2026.pdf

@@ -1,0 +1,37 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "departamentos_sub",
+  "position": {
+    "x": 24.0,
+    "y": 50.0,
+    "z": 1,
+    "height": 30.0,
+    "width": 800.0,
+    "tabOrder": 1
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Donde se produjo el bien. El petróleo no trae departamento en los microdatos.",
+                    "textStyle": {
+                      "fontSize": "10pt",
+                      "color": "#6b7572"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

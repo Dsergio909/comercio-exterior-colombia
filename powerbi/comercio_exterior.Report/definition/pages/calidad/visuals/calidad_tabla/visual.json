@@ -1,0 +1,175 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "calidad_tabla",
+  "position": {
+    "x": 24.0,
+    "y": 92.0,
+    "z": 2,
+    "height": 592.0,
+    "width": 640.0,
+    "tabOrder": 2
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "cuadre_boletin"
+                    }
+                  },
+                  "Property": "Flujo"
+                }
+              },
+              "queryRef": "cuadre_boletin.Flujo",
+              "nativeQueryRef": "Flujo"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "cuadre_boletin"
+                    }
+                  },
+                  "Property": "Tipo"
+                }
+              },
+              "queryRef": "cuadre_boletin.Tipo",
+              "nativeQueryRef": "Tipo"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "cuadre_boletin"
+                    }
+                  },
+                  "Property": "Periodo"
+                }
+              },
+              "queryRef": "cuadre_boletin.Periodo",
+              "nativeQueryRef": "Periodo"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "cuadre_boletin"
+                    }
+                  },
+                  "Property": "Boletín (MUSD)"
+                }
+              },
+              "queryRef": "cuadre_boletin.Boletín (MUSD)",
+              "nativeQueryRef": "Boletín (MUSD)"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "cuadre_boletin"
+                    }
+                  },
+                  "Property": "Calculado (MUSD)"
+                }
+              },
+              "queryRef": "cuadre_boletin.Calculado (MUSD)",
+              "nativeQueryRef": "Calculado (MUSD)"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "cuadre_boletin"
+                    }
+                  },
+                  "Property": "Diferencia %"
+                }
+              },
+              "queryRef": "cuadre_boletin.Diferencia %",
+              "nativeQueryRef": "Diferencia %"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "cuadre_boletin"
+                    }
+                  },
+                  "Property": "Resultado"
+                }
+              },
+              "queryRef": "cuadre_boletin.Resultado",
+              "nativeQueryRef": "Resultado"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Cuadre por periodo (13 cifras de los boletines)'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "11D"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#1f2725'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

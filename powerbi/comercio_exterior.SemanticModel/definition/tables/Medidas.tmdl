@@ -1,0 +1,323 @@
+/// Medidas del tablero (también en dax/medidas.md).
+table Medidas
+	lineageTag: 766f00e7-66f4-5c54-a1df-959305d5c51c
+
+	/// Valor FOB en millones de dólares (tabla logistica: el total de todo).
+	measure 'Exportaciones (MUSD)' = DIVIDE ( SUM ( logistica[fob_usd] ), 1000000 )
+		formatString: #,0.0
+		displayFolder: 1. Base
+		lineageTag: 78fed2c7-e9c3-5418-bfdc-81b0c1c0ba79
+
+	/// Peso neto en miles de toneladas.
+	measure 'Kilos netos (miles de t)' = DIVIDE ( SUM ( logistica[kilos_netos] ), 1000000 )
+		formatString: #,0.0
+		displayFolder: 1. Base
+		lineageTag: 78bd247d-9ab5-5a17-b3e7-3af31c7ccc61
+
+	/// Precio implícito: valor FOB entre kilos netos.
+	measure 'USD por kilo' = DIVIDE ( SUM ( logistica[fob_usd] ), SUM ( logistica[kilos_netos] ) )
+		formatString: #,0.00
+		displayFolder: 1. Base
+		lineageTag: 8e04a51e-2210-5dac-8526-83e66c2b2002
+
+	/// Mismo periodo del año anterior.
+	measure 'Exportaciones año anterior (MUSD)' = CALCULATE ( [Exportaciones (MUSD)], SAMEPERIODLASTYEAR ( Calendario[Fecha] ) )
+		formatString: #,0.0
+		displayFolder: 2. Tiempo
+		lineageTag: dcc8b6fc-e5ec-5272-9e5c-3e0a7939d6ab
+
+	/// Contra el mismo periodo del año anterior. Solo con un año elegido; en blanco si no hay año anterior.
+	measure 'Variación anual %' =
+			VAR actual = [Exportaciones (MUSD)]
+			VAR anterior = [Exportaciones año anterior (MUSD)]
+			RETURN IF ( HASONEVALUE ( Calendario[Año] ) && NOT ISBLANK ( anterior ), DIVIDE ( actual - anterior, anterior ) )
+		formatString: 0.0 %;-0.0 %;0.0 %
+		displayFolder: 2. Tiempo
+		lineageTag: 9a8bc153-3d17-524c-a55d-bf1971df81af
+
+	/// De enero al último mes con datos (sin elegir año: lo que va de 2026).
+	measure 'Acumulado del año (MUSD)' = TOTALYTD ( [Exportaciones (MUSD)], Calendario[Fecha] )
+		formatString: #,0.0
+		displayFolder: 2. Tiempo
+		lineageTag: 0c46a765-37d6-5b2b-90d0-890a14f1cd72
+
+	/// Los mismos meses del año anterior.
+	measure 'Acumulado año anterior (MUSD)' = CALCULATE ( [Acumulado del año (MUSD)], SAMEPERIODLASTYEAR ( Calendario[Fecha] ) )
+		formatString: #,0.0
+		displayFolder: 2. Tiempo
+		lineageTag: 45ac32e8-fc09-571b-bc55-2bdc95a5ec78
+
+	/// Acumulado del año contra los mismos meses del año anterior.
+	measure 'Variación del acumulado %' = DIVIDE ( [Acumulado del año (MUSD)] - [Acumulado año anterior (MUSD)], [Acumulado año anterior (MUSD)] )
+		formatString: 0.0 %;-0.0 %;0.0 %
+		displayFolder: 2. Tiempo
+		lineageTag: d0468cd1-7d00-5655-bd04-d8bc5ce72cc6
+
+	/// Peso sobre el total del periodo (respeta el filtro de fechas).
+	measure 'Participación %' =
+			DIVIDE (
+			    [Exportaciones (MUSD)],
+			    CALCULATE ( [Exportaciones (MUSD)], REMOVEFILTERS ( dim_capitulo ), REMOVEFILTERS ( dim_via ) )
+			)
+		formatString: 0.0 %;-0.0 %;0.0 %
+		displayFolder: 3. Peso
+		lineageTag: 432cae75-ba13-574a-af69-df6d13eb97c8
+
+	/// Minería y energía (petróleo, carbón, oro y otros minerales) sobre el total.
+	measure 'Minero-energético %' = DIVIDE ( CALCULATE ( [Exportaciones (MUSD)], dim_capitulo[Grupo] IN { "Combustibles", "Oro y piedras", "Minería" } ), [Exportaciones (MUSD)] )
+		formatString: 0.0 %;-0.0 %;0.0 %
+		displayFolder: 3. Peso
+		lineageTag: 5f31b2b1-c3d8-58b0-b42d-3368fc06661e
+
+	/// Minería y energía en lo que va del año (o del año elegido).
+	measure 'Minero-energético % del año' = CALCULATE ( [Minero-energético %], DATESYTD ( Calendario[Fecha] ) )
+		formatString: 0.0 %;-0.0 %;0.0 %
+		displayFolder: 3. Peso
+		lineageTag: 6cac6966-f258-5a5e-b7de-3ea354b6761c
+
+	/// Capítulos 01 a 24 del arancel sobre el total.
+	measure 'Agro y alimentos %' = DIVIDE ( CALCULATE ( [Exportaciones (MUSD)], dim_capitulo[Grupo] = "Agro y alimentos" ), [Exportaciones (MUSD)] )
+		formatString: 0.0 %;-0.0 %;0.0 %
+		displayFolder: 3. Peso
+		lineageTag: 4218b9ae-39fb-5bcb-9504-9b7171ba4113
+
+	/// Concentración: los 10 capítulos del arancel más grandes sobre el total.
+	measure 'Peso de los 10 primeros productos %' =
+			VAR top10 = TOPN ( 10, ALL ( dim_capitulo[Capítulo] ), [Exportaciones (MUSD)], DESC )
+			RETURN DIVIDE ( CALCULATE ( [Exportaciones (MUSD)], top10, REMOVEFILTERS ( dim_capitulo ) ), CALCULATE ( [Exportaciones (MUSD)], REMOVEFILTERS ( dim_capitulo ) ) )
+		formatString: 0.0 %;-0.0 %;0.0 %
+		displayFolder: 3. Peso
+		lineageTag: f6f9e179-ae53-5a2c-b271-af91d6c5f049
+
+	/// Ranking del capítulo por valor en el periodo.
+	measure 'Puesto del producto' = IF ( HASONEVALUE ( dim_capitulo[Producto] ), RANKX ( ALLSELECTED ( dim_capitulo ), [Exportaciones (MUSD)], , DESC, DENSE ) )
+		formatString: 0
+		displayFolder: 3. Peso
+		lineageTag: dc6d90aa-1314-51cb-bffa-edfc7047903b
+
+	/// Ranking del capítulo por kilos en el periodo.
+	measure 'Puesto por kilos' = IF ( HASONEVALUE ( dim_capitulo[Producto] ), RANKX ( ALLSELECTED ( dim_capitulo ), [Kilos netos (miles de t)], , DESC, DENSE ) )
+		formatString: 0
+		displayFolder: 3. Peso
+		lineageTag: 35c2829c-f478-51db-acdd-dd6664c56d32
+
+	/// Valor FOB en millones de dólares, de la tabla destinos.
+	measure 'Exportaciones por destino (MUSD)' = DIVIDE ( SUM ( destinos[fob_usd] ), 1000000 )
+		formatString: #,0.0
+		displayFolder: 4. Destinos
+		lineageTag: 72d77984-606c-5d88-af74-4630c035b615
+
+	/// Mismo periodo del año anterior.
+	measure 'Exportaciones por destino año anterior (MUSD)' = CALCULATE ( [Exportaciones por destino (MUSD)], SAMEPERIODLASTYEAR ( Calendario[Fecha] ) )
+		formatString: #,0.0
+		displayFolder: 4. Destinos
+		lineageTag: 8839c392-4628-5840-8504-813718f07afe
+
+	/// Solo con un año elegido.
+	measure 'Variación anual por destino %' =
+			VAR actual = [Exportaciones por destino (MUSD)]
+			VAR anterior = [Exportaciones por destino año anterior (MUSD)]
+			RETURN IF ( HASONEVALUE ( Calendario[Año] ) && NOT ISBLANK ( anterior ), DIVIDE ( actual - anterior, anterior ) )
+		formatString: 0.0 %;-0.0 %;0.0 %
+		displayFolder: 4. Destinos
+		lineageTag: 3690f26e-4bad-52a1-ae5f-5a79ffec7c75
+
+	/// Peso del destino sobre el total del periodo.
+	measure 'Participación por destino %' =
+			DIVIDE (
+			    [Exportaciones por destino (MUSD)],
+			    CALCULATE ( [Exportaciones por destino (MUSD)], REMOVEFILTERS ( dim_pais ) )
+			)
+		formatString: 0.0 %;-0.0 %;0.0 %
+		displayFolder: 4. Destinos
+		lineageTag: 4e42d016-18c1-51de-bb91-7358b05140dc
+
+	/// Ranking del país en el periodo, sin «Otros destinos» (junta muchos países pequeños).
+	measure 'Puesto del destino' =
+			IF (
+			    HASONEVALUE ( dim_pais[País] ) && SELECTEDVALUE ( dim_pais[País] ) <> "Otros destinos (menos de 3 registros)",
+			    RANKX ( FILTER ( ALLSELECTED ( dim_pais[País] ), dim_pais[País] <> "Otros destinos (menos de 3 registros)" ), [Exportaciones por destino (MUSD)], , DESC, DENSE )
+			)
+		formatString: 0
+		displayFolder: 4. Destinos
+		lineageTag: 1ccffb43-a91e-557b-9944-033e0b1d2ec4
+
+	/// Valor FOB en millones de dólares, de la tabla departamentos.
+	measure 'Exportaciones por departamento (MUSD)' = DIVIDE ( SUM ( departamentos[fob_usd] ), 1000000 )
+		formatString: #,0.0
+		displayFolder: 5. Departamentos
+		lineageTag: ffd9ef31-0437-591c-b077-3dfb58b77dac
+
+	/// Peso del departamento sobre el total del periodo.
+	measure 'Participación por departamento %' =
+			DIVIDE (
+			    [Exportaciones por departamento (MUSD)],
+			    CALCULATE ( [Exportaciones por departamento (MUSD)], REMOVEFILTERS ( dim_departamento ) )
+			)
+		formatString: 0.0 %;-0.0 %;0.0 %
+		displayFolder: 5. Departamentos
+		lineageTag: bd8ebc8d-3eb4-5a33-844d-cab76bec3c60
+
+	/// Minería y energía sobre lo que exporta el departamento, de la tabla anual (mismos meses de cada año). Los años en que esa parte sale de 1 o 2 registros no entran (reserva).
+	measure 'Minero-energético por departamento %' =
+			VAR anios = VALUES ( Calendario[Año] )
+			VAR con_dato = CALCULATE ( SUM ( departamentos_anual[fob_musd] ), TREATAS ( anios, departamentos_anual[anio] ),
+			    NOT ISBLANK ( departamentos_anual[fob_sin_minero_energetico_musd] ) )
+			VAR sin_me = CALCULATE ( SUM ( departamentos_anual[fob_sin_minero_energetico_musd] ), TREATAS ( anios, departamentos_anual[anio] ) )
+			RETURN DIVIDE ( con_dato - sin_me, con_dato )
+		formatString: 0.0 %;-0.0 %;0.0 %
+		displayFolder: 5. Departamentos
+		lineageTag: c3a2b5f8-7dda-5fa8-b1c4-d259b11e2576
+
+	/// Ranking del departamento en el periodo (incluye el petróleo sin departamento, sin «Otros»).
+	measure 'Puesto del departamento' =
+			IF (
+			    HASONEVALUE ( dim_departamento[Departamento] ) && SELECTEDVALUE ( dim_departamento[Departamento] ) <> "Otros departamentos (menos de 3 registros)",
+			    RANKX ( FILTER ( ALLSELECTED ( dim_departamento[Departamento] ), dim_departamento[Departamento] <> "Otros departamentos (menos de 3 registros)" ), [Exportaciones por departamento (MUSD)], , DESC, DENSE )
+			)
+		formatString: 0
+		displayFolder: 5. Departamentos
+		lineageTag: 3a23e406-6554-542d-80d0-97b2e01d3537
+
+	/// Ranking solo entre los departamentos que tienen punto (sin el 00 ni «Otros»).
+	measure 'Puesto en el mapa' =
+			IF (
+			    HASONEVALUE ( dim_departamento[Departamento] ) && NOT ISBLANK ( AVERAGE ( dim_departamento[latitud] ) ),
+			    RANKX (
+			        FILTER ( ALLSELECTED ( dim_departamento[Departamento] ), NOT ISBLANK ( CALCULATE ( AVERAGE ( dim_departamento[latitud] ) ) ) ),
+			        [Exportaciones por departamento (MUSD)], , DESC, DENSE
+			    )
+			)
+		formatString: 0
+		displayFolder: 5. Departamentos
+		lineageTag: a380f75a-eedf-539f-876e-c6ef6b630bf2
+
+	/// Latitud, solo para los 12 departamentos que más exportan. El mapa es un gráfico de dispersión.
+	measure 'Latitud del mapa' = IF ( NOT ISBLANK ( [Puesto en el mapa] ) && [Puesto en el mapa] <= 12, AVERAGE ( dim_departamento[latitud] ) )
+		formatString: 0.0000
+		displayFolder: 5. Departamentos
+		lineageTag: 957a5bec-0088-598a-ba99-e56b7c23c4e6
+
+	/// Longitud, solo para los 12 departamentos que más exportan.
+	measure 'Longitud del mapa' = IF ( NOT ISBLANK ( [Puesto en el mapa] ) && [Puesto en el mapa] <= 12, AVERAGE ( dim_departamento[longitud] ) )
+		formatString: 0.0000
+		displayFolder: 5. Departamentos
+		lineageTag: 7393b960-a260-5169-8296-c172dd8c877a
+
+	/// Valor con país vacío o dudoso en los microdatos (2022 y 2024).
+	measure 'Sin país confiable %' =
+			VAR total = [Exportaciones por destino (MUSD)]
+			RETURN IF ( NOT ISBLANK ( total ), DIVIDE ( COALESCE ( CALCULATE ( [Exportaciones por destino (MUSD)], dim_pais[País confiable] = "No" ), 0 ), total ) )
+		formatString: 0.0 %;-0.0 %;0.0 %
+		displayFolder: 6. Calidad
+		lineageTag: 18af8f1b-4f03-5996-afe9-39db537dc61d
+
+	/// El mismo dato de control_pais_dudoso.csv, el que cita el README. Vacío en 2019 y 2021 (menos de 3 registros).
+	measure 'Sin país confiable % (control anual)' = DIVIDE ( SUM ( pais_dudoso_anual[dudoso_pct] ), 100 )
+		formatString: 0.0 %;-0.0 %;0.0 %
+		displayFolder: 6. Calidad
+		lineageTag: 60d2c9cb-ef44-5d29-b231-5ffc0cfe17dd
+
+	/// Último mes con datos.
+	measure 'Datos hasta' = FORMAT ( MAX ( logistica[periodo] ), "mmm yyyy", "es-CO" )
+		displayFolder: 6. Calidad
+		lineageTag: f3a58d81-848a-5434-a83e-cf891ef32133
+
+	/// «Exportaciones por destino (MUSD)» solo para los 15 primeros según «Puesto del destino».
+	measure 'Exportaciones por destino (MUSD) · 15 primeros destinos' = IF ( NOT ISBLANK ( [Puesto del destino] ) && [Puesto del destino] <= 15, [Exportaciones por destino (MUSD)] )
+		formatString: #,0.0
+		displayFolder: 7. Los N primeros
+		lineageTag: 197ccabc-727d-5be5-b060-72f4a093d0c8
+
+	/// «Puesto del destino» solo para los 12 primeros según «Puesto del destino».
+	measure 'Puesto del destino · 12 primeros destinos' = IF ( NOT ISBLANK ( [Puesto del destino] ) && [Puesto del destino] <= 12, [Puesto del destino] )
+		formatString: 0
+		displayFolder: 7. Los N primeros
+		lineageTag: 95869f2a-9857-5680-94c0-1c0b58237619
+
+	/// «Exportaciones por destino (MUSD)» solo para los 12 primeros según «Puesto del destino».
+	measure 'Exportaciones por destino (MUSD) · 12 primeros destinos' = IF ( NOT ISBLANK ( [Puesto del destino] ) && [Puesto del destino] <= 12, [Exportaciones por destino (MUSD)] )
+		formatString: #,0.0
+		displayFolder: 7. Los N primeros
+		lineageTag: 300c2f60-2e90-5fa3-b524-efb57e7bcab5
+
+	/// «Participación por destino %» solo para los 12 primeros según «Puesto del destino».
+	measure 'Participación por destino % · 12 primeros destinos' = IF ( NOT ISBLANK ( [Puesto del destino] ) && [Puesto del destino] <= 12, [Participación por destino %] )
+		formatString: 0.0 %;-0.0 %;0.0 %
+		displayFolder: 7. Los N primeros
+		lineageTag: d8cceb3e-9d34-5af3-ac37-2ddc9a870fac
+
+	/// «Variación anual por destino %» solo para los 12 primeros según «Puesto del destino».
+	measure 'Variación anual por destino % · 12 primeros destinos' = IF ( NOT ISBLANK ( [Puesto del destino] ) && [Puesto del destino] <= 12, [Variación anual por destino %] )
+		formatString: 0.0 %;-0.0 %;0.0 %
+		displayFolder: 7. Los N primeros
+		lineageTag: e56cdbb1-2559-53f7-9a20-2f22e62b338a
+
+	/// «Exportaciones (MUSD)» solo para los 15 primeros según «Puesto del producto».
+	measure 'Exportaciones (MUSD) · 15 primeros productos' = IF ( NOT ISBLANK ( [Puesto del producto] ) && [Puesto del producto] <= 15, [Exportaciones (MUSD)] )
+		formatString: #,0.0
+		displayFolder: 7. Los N primeros
+		lineageTag: 7f5a4f92-7f61-5fd4-8b79-bddbd0e1c760
+
+	/// «Exportaciones (MUSD)» solo para los 12 primeros según «Puesto del producto».
+	measure 'Exportaciones (MUSD) · 12 primeros productos' = IF ( NOT ISBLANK ( [Puesto del producto] ) && [Puesto del producto] <= 12, [Exportaciones (MUSD)] )
+		formatString: #,0.0
+		displayFolder: 7. Los N primeros
+		lineageTag: 7e787650-54f9-56c1-a8ff-df2dd255add8
+
+	/// «Variación anual %» solo para los 12 primeros según «Puesto del producto».
+	measure 'Variación anual % · 12 primeros productos' = IF ( NOT ISBLANK ( [Puesto del producto] ) && [Puesto del producto] <= 12, [Variación anual %] )
+		formatString: 0.0 %;-0.0 %;0.0 %
+		displayFolder: 7. Los N primeros
+		lineageTag: 03189623-1194-5412-b93d-55a47dd0a20e
+
+	/// «USD por kilo» solo para los 12 primeros según «Puesto del producto».
+	measure 'USD por kilo · 12 primeros productos' = IF ( NOT ISBLANK ( [Puesto del producto] ) && [Puesto del producto] <= 12, [USD por kilo] )
+		formatString: #,0.00
+		displayFolder: 7. Los N primeros
+		lineageTag: 41d912bd-938b-5d7c-aab1-0b8a690af905
+
+	/// «Exportaciones por departamento (MUSD)» solo para los 12 primeros según «Puesto del departamento».
+	measure 'Exportaciones por departamento (MUSD) · 12 primeros departamentos' = IF ( NOT ISBLANK ( [Puesto del departamento] ) && [Puesto del departamento] <= 12, [Exportaciones por departamento (MUSD)] )
+		formatString: #,0.0
+		displayFolder: 7. Los N primeros
+		lineageTag: 1721c8b2-6264-52d2-89fc-9342f440a1f9
+
+	/// «Participación por departamento %» solo para los 12 primeros según «Puesto del departamento».
+	measure 'Participación por departamento % · 12 primeros departamentos' = IF ( NOT ISBLANK ( [Puesto del departamento] ) && [Puesto del departamento] <= 12, [Participación por departamento %] )
+		formatString: 0.0 %;-0.0 %;0.0 %
+		displayFolder: 7. Los N primeros
+		lineageTag: 577cb138-963f-5091-8976-6b31e62e97ba
+
+	/// «Minero-energético por departamento %» solo para los 12 primeros según «Puesto del departamento».
+	measure 'Minero-energético por departamento % · 12 primeros departamentos' = IF ( NOT ISBLANK ( [Puesto del departamento] ) && [Puesto del departamento] <= 12, [Minero-energético por departamento %] )
+		formatString: 0.0 %;-0.0 %;0.0 %
+		displayFolder: 7. Los N primeros
+		lineageTag: f71e4ad2-03ca-54dd-82e6-f739caee866b
+
+	/// «Kilos netos (miles de t)» solo para los 12 primeros según «Puesto por kilos».
+	measure 'Kilos netos (miles de t) · 12 primeros productos por kilos' = IF ( NOT ISBLANK ( [Puesto por kilos] ) && [Puesto por kilos] <= 12, [Kilos netos (miles de t)] )
+		formatString: #,0.0
+		displayFolder: 7. Los N primeros
+		lineageTag: a5b48946-84bd-5eed-bf81-e3bdd077094d
+
+	/// «USD por kilo» solo para los 12 primeros según «Puesto por kilos».
+	measure 'USD por kilo · 12 primeros productos por kilos' = IF ( NOT ISBLANK ( [Puesto por kilos] ) && [Puesto por kilos] <= 12, [USD por kilo] )
+		formatString: #,0.00
+		displayFolder: 7. Los N primeros
+		lineageTag: 2f530e8e-f4fb-5633-8285-cf02fe041be0
+
+	column Columna
+		isHidden
+		lineageTag: b6f68b34-9ddd-53d6-a1ed-eb9024b631f0
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Columna]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Medidas = calculated
+		mode: import
+		source = ROW ( "Columna", BLANK () )
+
+	annotation PBI_ResultType = Table

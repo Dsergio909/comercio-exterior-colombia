@@ -1,0 +1,5 @@
+-r requirements-pipeline.txt
+pytest==9.2.0
+matplotlib==3.11.2
+openpyxl
+pypdf

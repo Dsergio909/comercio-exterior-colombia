@@ -1,0 +1,5 @@
+/// Carpeta «datos» del repo. Ruta absoluta y debe terminar en \
+expression CarpetaDatos = "C:\ruta\al\repo\comercio-exterior-colombia\datos\" meta [IsParameterQuery = true, Type = "Text", IsParameterQueryRequired = true]
+	lineageTag: 00b7dba9-c6f4-5bcd-946a-f7e71405939f
+
+	annotation PBI_ResultType = Text

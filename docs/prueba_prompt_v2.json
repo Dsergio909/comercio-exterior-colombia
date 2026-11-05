@@ -1,0 +1,31 @@
+{
+  "periodo": "2026-09",
+  "instrucciones": {
+    "sistema": "Eres analista de comercio exterior y escribes para un tablero público.\nEscribe en español de Colombia un resumen de 4 a 6 frases cortas sobre las exportaciones del mes.\nReglas obligatorias:\n1. Usa SOLO las cifras de la lista, copiadas tal cual (coma para decimales, punto para miles).\n2. No calcules, no redondees distinto y no inventes cifras, porcentajes ni causas.\n3. Los únicos años que puedes escribir son 2025 y 2026. No escribas otros números (ni posiciones como \"5 destinos\").\n4. Si una variación es negativa, di que cayó y escribe el número sin el signo menos.\n5. Sin títulos, sin viñetas, sin adjetivos de relleno. Solo texto.\n6. Menciona el destino o el producto con la variación anual más grande de la lista, con su cifra.",
+    "usuario": "Mes: septiembre de 2026\nCifras (fuente: DANE):\n- Exportaciones del mes: 5.410,7 millones de dólares FOB\n- Mismo mes del año anterior: 4.650,3 millones de dólares FOB\n- Variación contra el mismo mes del año anterior: 16,4 %\n- Acumulado del año hasta este mes: 42.301,8 millones de dólares FOB\n- Acumulado del año anterior, mismos meses: 37.338,7 millones de dólares FOB\n- Variación del acumulado: 13,3 %\n- Destino: Estados Unidos: 1.367,0 millones de dólares FOB\n- Destino: Panamá: 437,5 millones de dólares FOB\n- Destino: Italia: 355,2 millones de dólares FOB\n- Destino: India: 292,1 millones de dólares FOB\n- Destino: Brasil: 227,0 millones de dólares FOB\n- Variación anual de Estados Unidos: 10,1 %\n- Variación anual de Panamá: 4,1 %\n- Variación anual de Italia: 345,1 %\n- Variación anual de India: 24,3 %\n- Variación anual de Brasil: -2,3 %\n- Producto: Combustibles minerales (petróleo y carbón): 2.065,5 millones de dólares FOB\n- Producto: Piedras y metales preciosos (oro), bisutería: 826,2 millones de dólares FOB\n- Producto: Café, té y especias: 510,2 millones de dólares FOB\n- Producto: Plantas vivas y flores: 184,7 millones de dólares FOB\n- Producto: Plástico y sus manufacturas: 157,0 millones de dólares FOB\n- Variación anual de Combustibles minerales (petróleo y carbón): 29,6 %\n- Variación anual de Piedras y metales preciosos (oro), bisutería: 83,4 %\n- Variación anual de Café, té y especias: 0,5 %\n- Variación anual de Plantas vivas y flores: 15,6 %\n- Variación anual de Plástico y sus manufacturas: -2,4 %\n- Mayor subida en dólares: Combustibles minerales (petróleo y carbón): 471,8 millones de dólares FOB\n- Mayor caída en dólares: Minerales metalíferos, escorias y cenizas: -235,5 millones de dólares FOB\n- Departamento: Antioquia: 1.312,7 millones de dólares FOB\n- Departamento: Petróleo y derivados (sin departamento): 1.225,2 millones de dólares FOB\n- Departamento: Bogotá D.C.: 530,4 millones de dólares FOB"
+  },
+  "resultados": [
+    {
+      "modelo": "qwen3.5:9b",
+      "intento": 1,
+      "segundos": 15.7,
+      "vram_mb": 7331,
+      "pasa": true,
+      "revisados": 10,
+      "sin_fuente": [],
+      "palabras": 110,
+      "texto": "Las exportaciones del mes alcanzaron 5.410,7 millones de dólares FOB frente a 4.650,3 millones en septiembre de 2025. Este valor representa un incremento anual del 16,4 % respecto al mismo periodo del año anterior. El acumulado hasta septiembre de 2026 suma 42.301,8 millones de dólares, lo que marca una variación positiva del 13,3 %. La mayor subida en dólares correspondió a Combustibles minerales (petróleo y carbón) con un aumento de 471,8 millones de dólares FOB. En términos de productos, Piedras y metales preciosos (oro), bisutería lideró el crecimiento anual con una variación del 83,4 %. Por departamento, Antioquia fue la entidad que más exportó con 1.312,7 millones de dólares FOB."
+    },
+    {
+      "modelo": "qwen3.5:9b",
+      "intento": 2,
+      "segundos": 3.5,
+      "vram_mb": 7332,
+      "pasa": true,
+      "revisados": 13,
+      "sin_fuente": [],
+      "palabras": 106,
+      "texto": "Las exportaciones del mes alcanzaron 5.410,7 millones de dólares FOB frente a 4.650,3 millones en septiembre de 2025. Este valor representa un crecimiento anual del 16,4% respecto al mismo periodo del año anterior. El acumulado hasta septiembre de 2026 suma 42.301,8 millones de dólares, con una variación positiva del 13,3%. Estados Unidos fue el destino principal con 1.367,0 millones de dólares FOB y una variación anual del 10,1%. Italia lideró las subidas con un incremento anual del 345,1% sobre su nivel en septiembre de 2025. Los combustibles minerales (petróleo y carbón) impulsaron el total con 2.065,5 millones de dólares FOB y una variación anual del 29,6%."
+    }
+  ]
+}

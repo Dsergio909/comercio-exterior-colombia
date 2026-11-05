@@ -1,0 +1,49 @@
+/// Capítulo del arancel (2 primeros dígitos de la subpartida).
+table dim_capitulo
+	lineageTag: 5551b2c7-2f8f-5291-930f-921561826dd3
+
+	column Capítulo
+		dataType: string
+		lineageTag: 0b7cdad5-447b-5623-a7c3-e87ea0b4844a
+		summarizeBy: none
+		sourceColumn: capitulo
+
+		annotation SummarizationSetBy = Automatic
+
+	column Producto
+		dataType: string
+		lineageTag: fc6c852c-9e08-5765-90a2-f1691aab8585
+		summarizeBy: none
+		sourceColumn: nombre
+
+		annotation SummarizationSetBy = Automatic
+
+	column Grupo
+		dataType: string
+		lineageTag: 7b84df7c-e7be-511e-9dcd-0d35cba41895
+		summarizeBy: none
+		sourceColumn: grupo
+
+		annotation SummarizationSetBy = Automatic
+
+	/// El nombre sin el paréntesis, para que quepa en las barras.
+	column 'Producto corto'
+		dataType: string
+		lineageTag: f79c547b-a004-51fa-a697-dea112db2493
+		summarizeBy: none
+		sourceColumn: Producto corto
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_capitulo = m
+		mode: import
+		source =
+				let
+				    Origen = Csv.Document(File.Contents(CarpetaDatos & "referencia\capitulos_arancel.csv"), [Delimiter = ",", Columns = 3, Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Encabezados = Table.PromoteHeaders(Origen, [PromoteAllScalars = true]),
+				    Tipos = Table.TransformColumnTypes(Encabezados, {{"capitulo", type text}, {"nombre", type text}, {"grupo", type text}}, "en-US"),
+				    Resultado = Table.AddColumn(Tipos, "Producto corto", each Text.Trim(Text.BeforeDelimiter([nombre], " (")), type text)
+				in
+				    Resultado
+
+	annotation PBI_ResultType = Table

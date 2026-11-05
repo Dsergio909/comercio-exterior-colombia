@@ -1,0 +1,59 @@
+/// Departamento de origen (DIVIPOLA). 00 = petróleo sin departamento.
+table dim_departamento
+	lineageTag: 3a2469cb-a58e-5a4a-8b45-6fb9a557e9a1
+
+	column codigo
+		dataType: string
+		isHidden
+		lineageTag: 2340410a-8d56-56a9-8285-f54e4ab11afa
+		summarizeBy: none
+		sourceColumn: codigo
+
+		annotation SummarizationSetBy = Automatic
+
+	column Departamento
+		dataType: string
+		lineageTag: 8764b239-8dd4-5d32-993e-cc3b88f0ee22
+		summarizeBy: none
+		sourceColumn: departamento
+
+		annotation SummarizationSetBy = Automatic
+
+	column Región
+		dataType: string
+		lineageTag: bb3242e9-7aa5-53a2-af40-2c7c0f508894
+		summarizeBy: none
+		sourceColumn: region
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Promedio de las cabeceras municipales (DANE, DIVIPOLA). Vacío en 00.
+	column latitud
+		dataType: double
+		isHidden
+		lineageTag: d4f0474f-e82a-51a5-8db4-e5a4840bffb1
+		summarizeBy: none
+		sourceColumn: latitud
+
+		annotation SummarizationSetBy = Automatic
+
+	column longitud
+		dataType: double
+		isHidden
+		lineageTag: 4db59aec-a765-5a6e-8884-18138bd56b22
+		summarizeBy: none
+		sourceColumn: longitud
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_departamento = m
+		mode: import
+		source =
+				let
+				    Origen = Csv.Document(File.Contents(CarpetaDatos & "referencia\departamentos.csv"), [Delimiter = ",", Columns = 5, Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Encabezados = Table.PromoteHeaders(Origen, [PromoteAllScalars = true]),
+				    Resultado = Table.TransformColumnTypes(Encabezados, {{"codigo", type text}, {"departamento", type text}, {"region", type text}, {"latitud", type number}, {"longitud", type number}}, "en-US")
+				in
+				    Resultado
+
+	annotation PBI_ResultType = Table

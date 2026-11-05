@@ -1,0 +1,75 @@
+{
+  "periodo": "2026-09",
+  "instrucciones": {
+    "sistema": "Eres analista de comercio exterior y escribes para un tablero público.\nEscribe en español de Colombia un resumen de 4 a 6 frases cortas sobre las exportaciones del mes.\nReglas obligatorias:\n1. Usa SOLO las cifras de la lista, copiadas tal cual (coma para decimales, punto para miles).\n2. No calcules, no redondees distinto y no inventes cifras, porcentajes ni causas.\n3. Los únicos años que puedes escribir son 2025 y 2026. No escribas otros números (ni posiciones como \"5 destinos\").\n4. Si una variación es negativa, di que cayó y escribe el número sin el signo menos.\n5. Sin títulos, sin viñetas, sin adjetivos de relleno. Solo texto.",
+    "usuario": "Mes: septiembre de 2026\nCifras (fuente: DANE):\n- Exportaciones del mes: 5.410,7 millones de dólares FOB\n- Mismo mes del año anterior: 4.650,3 millones de dólares FOB\n- Variación contra el mismo mes del año anterior: 16,4 %\n- Acumulado del año hasta este mes: 42.301,8 millones de dólares FOB\n- Acumulado del año anterior, mismos meses: 37.338,7 millones de dólares FOB\n- Variación del acumulado: 13,3 %\n- Destino: Estados Unidos: 1.367,0 millones de dólares FOB\n- Destino: Panamá: 437,5 millones de dólares FOB\n- Destino: Italia: 355,2 millones de dólares FOB\n- Destino: India: 292,1 millones de dólares FOB\n- Destino: Brasil: 227,0 millones de dólares FOB\n- Variación anual de Estados Unidos: 10,1 %\n- Variación anual de Panamá: 4,1 %\n- Variación anual de Italia: 345,1 %\n- Variación anual de India: 24,3 %\n- Variación anual de Brasil: -2,3 %\n- Producto: Combustibles minerales (petróleo y carbón): 2.065,5 millones de dólares FOB\n- Producto: Piedras y metales preciosos (oro), bisutería: 826,2 millones de dólares FOB\n- Producto: Café, té y especias: 510,2 millones de dólares FOB\n- Producto: Plantas vivas y flores: 184,7 millones de dólares FOB\n- Producto: Plástico y sus manufacturas: 157,0 millones de dólares FOB\n- Variación anual de Combustibles minerales (petróleo y carbón): 29,6 %\n- Variación anual de Piedras y metales preciosos (oro), bisutería: 83,4 %\n- Variación anual de Café, té y especias: 0,5 %\n- Variación anual de Plantas vivas y flores: 15,6 %\n- Variación anual de Plástico y sus manufacturas: -2,4 %\n- Mayor subida en dólares: Combustibles minerales (petróleo y carbón): 471,8 millones de dólares FOB\n- Mayor caída en dólares: Minerales metalíferos, escorias y cenizas: -235,5 millones de dólares FOB\n- Departamento: Antioquia: 1.312,7 millones de dólares FOB\n- Departamento: Petróleo y derivados (sin departamento): 1.225,2 millones de dólares FOB\n- Departamento: Bogotá D.C.: 530,4 millones de dólares FOB"
+  },
+  "resultados": [
+    {
+      "modelo": "qwen3.5:4b",
+      "intento": 1,
+      "segundos": 11.8,
+      "vram_mb": 4852,
+      "pasa": true,
+      "revisados": 12,
+      "sin_fuente": [],
+      "palabras": 126,
+      "texto": "Las exportaciones del mes alcanzaron 5.410,7 millones de dólares FOB, lo que representa un aumento del 16,4 % respecto al mismo mes del año anterior. El acumulado anual hasta septiembre se sitúa en 42.301,8 millones de dólares FOB, con una variación del 13,3 % contra el periodo correspondiente de 2025. Estados Unidos sigue siendo el principal destino con 1.367,0 millones de dólares FOB, mientras que Panamá recibió 437,5 millones de dólares FOB y Italia 355,2 millones de dólares FOB. Los combustibles minerales lideraron las ventas con 2.065,5 millones de dólares FOB, seguido por piedras y metales preciosos con 826,2 millones de dólares FOB. El departamento de Antioquia exportó 1.312,7 millones de dólares FOB y el petróleo y derivados representaron 1.225,2 millones de dólares FOB en total."
+    },
+    {
+      "modelo": "qwen3.5:4b",
+      "intento": 2,
+      "segundos": 2.5,
+      "vram_mb": 4852,
+      "pasa": true,
+      "revisados": 12,
+      "sin_fuente": [],
+      "palabras": 126,
+      "texto": "Las exportaciones del mes alcanzaron 5.410,7 millones de dólares FOB, lo que representa un aumento del 16,4 % respecto al mismo mes del año anterior. El acumulado anual hasta septiembre se sitúa en 42.301,8 millones de dólares FOB, con una variación del 13,3 % contra el periodo correspondiente de 2025. Estados Unidos sigue siendo el principal destino con 1.367,0 millones de dólares FOB, mientras que Panamá registró 437,5 millones de dólares FOB y Italia 355,2 millones de dólares FOB. Los combustibles minerales lideraron las ventas con 2.065,5 millones de dólares FOB, seguido por piedras y metales preciosos en 826,2 millones de dólares FOB. El departamento de Antioquia exportó 1.312,7 millones de dólares FOB y el petróleo y derivados representaron 1.225,2 millones de dólares FOB del total."
+    },
+    {
+      "modelo": "qwen3.5:4b",
+      "intento": 3,
+      "segundos": 2.8,
+      "vram_mb": 4968,
+      "pasa": true,
+      "revisados": 12,
+      "sin_fuente": [],
+      "palabras": 143,
+      "texto": "Las exportaciones del mes alcanzaron 5.410,7 millones de dólares FOB, lo que representa un aumento del 16,4 % respecto a septiembre de 2025. El acumulado anual hasta este momento es de 42.301,8 millones de dólares FOB, con una variación del 13,3 % contra el mismo periodo del año anterior. Estados Unidos sigue siendo el principal destino con 1.367,0 millones de dólares FOB, mientras que Italia registró la mayor variación anual con un incremento del 345,1 %. Los combustibles minerales lideraron las exportaciones con 2.065,5 millones de dólares FOB y una subida del 29,6 % en comparación con el año pasado. El plástico y sus manufacturas fueron el único producto que registró una caída anual del 2,4 %, mientras que los metales preciosos subieron un 83,4 %. Antioquia se posicionó como el departamento con mayor volumen de exportaciones con 1.312,7 millones de dólares FOB."
+    },
+    {
+      "modelo": "qwen3.5:9b",
+      "intento": 1,
+      "segundos": 16.7,
+      "vram_mb": 7551,
+      "pasa": true,
+      "revisados": 11,
+      "sin_fuente": [],
+      "palabras": 95,
+      "texto": "Las exportaciones de septiembre de 2026 alcanzaron 5.410,7 millones de dólares FOB, lo que representa un aumento del 16,4 % frente al mismo mes del año anterior. El acumulado anual hasta este momento totalizó 42.301,8 millones de dólares, con una variación positiva del 13,3 % respecto a los mismos meses de 2025. Estados Unidos fue el principal destino con 1.367,0 millones de dólares, seguido por Panamá con 437,5 millones y Italia con 355,2 millones. Los combustibles minerales lideraron la producción exportada con 2.065,5 millones de dólares, mientras que Antioquia concentró 1.312,7 millones del total departamental."
+    },
+    {
+      "modelo": "qwen3.5:9b",
+      "intento": 2,
+      "segundos": 2.9,
+      "vram_mb": 7579,
+      "pasa": true,
+      "revisados": 11,
+      "sin_fuente": [],
+      "palabras": 95,
+      "texto": "Las exportaciones de septiembre de 2026 alcanzaron 5.410,7 millones de dólares FOB, lo que representa un aumento del 16,4 % frente al mismo mes del año anterior. El acumulado anual hasta este punto suma 42.301,8 millones de dólares, con una variación positiva del 13,3 % respecto al periodo igual del 2025. Estados Unidos fue el principal destino con 1.367,0 millones de dólares, seguido por Panamá con 437,5 millones y Italia con 355,2 millones. Los combustibles minerales lideraron los productos exportados con 2.065,5 millones de dólares, mientras que Antioquia encabezó la participación departamental con 1.312,7 millones."
+    },
+    {
+      "modelo": "qwen3.5:9b",
+      "intento": 3,
+      "segundos": 3.0,
+      "vram_mb": 7640,
+      "pasa": true,
+      "revisados": 12,
+      "sin_fuente": [],
+      "palabras": 90,
+      "texto": "Las exportaciones de septiembre de 2026 alcanzaron 5.410,7 millones de dólares FOB, lo que representa un aumento del 16,4 % frente al mismo mes de 2025. El acumulado anual hasta este punto suma 42.301,8 millones de dólares, con una variación positiva del 13,3 % respecto a 2025. Estados Unidos fue el principal destino con 1.367,0 millones de dólares, seguido por Panamá con 437,5 millones y Italia con 355,2 millones. Los combustibles minerales lideraron los productos exportados con 2.065,5 millones de dólares, mientras que Antioquia encabezó los departamentos con 1.312,7 millones."
+    }
+  ]
+}

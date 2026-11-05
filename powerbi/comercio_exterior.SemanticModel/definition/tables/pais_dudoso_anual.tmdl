@@ -1,0 +1,36 @@
+/// Valor sin país confiable por año, de datos/agregados/control_pais_dudoso.csv. Vacío en 2019 y 2021: ahí ese valor sale de 1 o 2 registros (reserva).
+table pais_dudoso_anual
+	lineageTag: 2d161d75-c8f0-5a09-9d7f-3d63d7f25e35
+
+	column 'Año del control'
+		dataType: int64
+		formatString: 0
+		lineageTag: 3aca62a9-caaf-5f8d-94e3-dc55af7c0ca2
+		summarizeBy: none
+		sourceColumn: anio
+
+		annotation SummarizationSetBy = Automatic
+
+	column dudoso_pct
+		dataType: double
+		formatString: 0.0
+		isHidden
+		lineageTag: be5e5696-b630-59fd-92b6-09992beeb532
+		summarizeBy: sum
+		sourceColumn: dudoso_pct
+
+		annotation SummarizationSetBy = Automatic
+
+	partition pais_dudoso_anual = m
+		mode: import
+		source =
+				let
+				    Origen = Csv.Document(File.Contents(CarpetaDatos & "agregados\control_pais_dudoso.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Encabezados = Table.PromoteHeaders(Origen, [PromoteAllScalars = true]),
+				    Columnas = Table.SelectColumns(Encabezados, {"anio", "dudoso_pct"}),
+				    Vacios = Table.ReplaceValue(Columnas, "", null, Replacer.ReplaceValue, {"dudoso_pct"}),
+				    Resultado = Table.TransformColumnTypes(Vacios, {{"anio", Int64.Type}, {"dudoso_pct", type number}}, "en-US")
+				in
+				    Resultado
+
+	annotation PBI_ResultType = Table

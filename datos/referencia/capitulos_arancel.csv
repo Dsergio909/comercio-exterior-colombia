@@ -1,0 +1,100 @@
+capitulo,nombre,grupo
+01,Animales vivos,Agro y alimentos
+02,Carne y despojos comestibles,Agro y alimentos
+03,Pescados y crustáceos,Agro y alimentos
+04,Leche y productos lácteos; huevos; miel,Agro y alimentos
+05,Los demás productos de origen animal,Agro y alimentos
+06,Plantas vivas y flores,Agro y alimentos
+07,Hortalizas,Agro y alimentos
+08,Frutas (banano y aguacate entre otras),Agro y alimentos
+09,"Café, té y especias",Agro y alimentos
+10,Cereales,Agro y alimentos
+11,Productos de la molinería,Agro y alimentos
+12,Semillas y frutos oleaginosos,Agro y alimentos
+13,Gomas y resinas vegetales,Agro y alimentos
+14,Materias trenzables vegetales,Agro y alimentos
+15,Grasas y aceites animales o vegetales,Agro y alimentos
+16,Preparaciones de carne o pescado,Agro y alimentos
+17,Azúcares y confitería,Agro y alimentos
+18,Cacao y sus preparaciones,Agro y alimentos
+19,"Preparaciones de cereales, harina o leche",Agro y alimentos
+20,"Preparaciones de hortalizas y frutas",Agro y alimentos
+21,Preparaciones alimenticias diversas,Agro y alimentos
+22,"Bebidas, líquidos alcohólicos y vinagre",Agro y alimentos
+23,Residuos de la industria alimentaria; alimento para animales,Agro y alimentos
+24,Tabaco,Agro y alimentos
+25,"Sal, azufre, tierras, piedras, yesos y cementos",Minería
+26,"Minerales metalíferos, escorias y cenizas",Minería
+27,"Combustibles minerales (petróleo y carbón)",Combustibles
+28,Productos químicos inorgánicos,Industria
+29,Productos químicos orgánicos,Industria
+30,Productos farmacéuticos,Industria
+31,Abonos,Industria
+32,"Tintas, pinturas y colorantes",Industria
+33,"Aceites esenciales, perfumería y cosméticos",Industria
+34,"Jabones y productos de limpieza",Industria
+35,Materias albuminoideas y colas,Industria
+36,Pólvora y explosivos,Industria
+37,Productos fotográficos,Industria
+38,Productos químicos diversos,Industria
+39,Plástico y sus manufacturas,Industria
+40,Caucho y sus manufacturas,Industria
+41,Pieles y cueros,Industria
+42,Manufacturas de cuero; artículos de viaje,Industria
+43,Peletería,Industria
+44,Madera y sus manufacturas,Industria
+45,Corcho,Industria
+46,Manufacturas de espartería y cestería,Industria
+47,Pasta de madera,Industria
+48,Papel y cartón,Industria
+49,Productos editoriales e impresos,Industria
+50,Seda,Industria
+51,Lana y pelo fino,Industria
+52,Algodón,Industria
+53,Las demás fibras textiles vegetales,Industria
+54,Filamentos sintéticos o artificiales,Industria
+55,Fibras sintéticas o artificiales discontinuas,Industria
+56,"Guata, fieltro y cordelería",Industria
+57,Alfombras,Industria
+58,Tejidos especiales,Industria
+59,Telas impregnadas o recubiertas,Industria
+60,Tejidos de punto,Industria
+61,Prendas de vestir de punto,Industria
+62,Prendas de vestir excepto de punto,Industria
+63,Los demás artículos textiles confeccionados,Industria
+64,Calzado,Industria
+65,Sombreros,Industria
+66,"Paraguas y bastones",Industria
+67,Plumas y flores artificiales,Industria
+68,"Manufacturas de piedra, yeso y cemento",Industria
+69,Productos cerámicos,Industria
+70,Vidrio y sus manufacturas,Industria
+71,"Piedras y metales preciosos (oro), bisutería",Oro y piedras
+72,Fundición de hierro y acero,Industria
+73,Manufacturas de hierro o acero,Industria
+74,Cobre y sus manufacturas,Industria
+75,Níquel y sus manufacturas,Minería
+76,Aluminio y sus manufacturas,Industria
+78,Plomo y sus manufacturas,Industria
+79,Cinc y sus manufacturas,Industria
+80,Estaño y sus manufacturas,Industria
+81,Los demás metales comunes,Industria
+82,"Herramientas y cuchillería",Industria
+83,Manufacturas diversas de metal,Industria
+84,"Máquinas y aparatos mecánicos",Industria
+85,"Máquinas y aparatos eléctricos",Industria
+86,Vehículos y material para vías férreas,Industria
+87,"Vehículos automóviles, tractores y sus partes",Industria
+88,Aeronaves y sus partes,Industria
+89,Barcos y embarcaciones,Industria
+90,"Instrumentos de óptica, medida y médicos",Industria
+91,Relojería,Industria
+92,Instrumentos musicales,Industria
+93,Armas y municiones,Industria
+94,"Muebles, colchones y luminarias",Industria
+95,"Juguetes y artículos de deporte",Industria
+96,Manufacturas diversas,Industria
+97,Objetos de arte y antigüedades,Industria
+98,Disposiciones especiales nacionales,Otros
+99,Disposiciones especiales nacionales,Otros
+OT,Otros capítulos (menos de 3 registros),Reserva del DANE

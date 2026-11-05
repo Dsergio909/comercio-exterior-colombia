@@ -1,0 +1,69 @@
+{
+  "name": "Comercio exterior (sobrio)",
+  "dataColors": [
+    "#1d4a35",
+    "#8c9894",
+    "#c2cac7",
+    "#4f6f62",
+    "#dfe4e2",
+    "#2f3a37"
+  ],
+  "background": "#ffffff",
+  "foreground": "#1f2725",
+  "tableAccent": "#1d4a35",
+  "good": "#1d4a35",
+  "bad": "#9b3b2f",
+  "neutral": "#8c9894",
+  "textClasses": {
+    "callout": {
+      "fontFace": "Segoe UI Semibold",
+      "fontSize": 26,
+      "color": "#1f2725"
+    },
+    "title": {
+      "fontFace": "Segoe UI Semibold",
+      "fontSize": 11,
+      "color": "#1f2725"
+    },
+    "header": {
+      "fontFace": "Segoe UI Semibold",
+      "fontSize": 11,
+      "color": "#1f2725"
+    },
+    "label": {
+      "fontFace": "Segoe UI",
+      "fontSize": 10,
+      "color": "#3d4543"
+    }
+  },
+  "visualStyles": {
+    "*": {
+      "*": {
+        "border": [
+          {
+            "show": false
+          }
+        ],
+        "dropShadow": [
+          {
+            "show": false
+          }
+        ]
+      }
+    },
+    "page": {
+      "*": {
+        "background": [
+          {
+            "color": {
+              "solid": {
+                "color": "#ffffff"
+              }
+            },
+            "transparency": 0
+          }
+        ]
+      }
+    }
+  }
+}

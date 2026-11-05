@@ -1,0 +1,221 @@
+codigo,pais_es,continente
+USA,Estados Unidos,América del Norte
+PAN,Panamá,América Central y Caribe
+CHN,China,Asia
+IND,India,Asia
+BRA,Brasil,América del Sur
+ECU,Ecuador,América del Sur
+NLD,Países Bajos,Europa
+MEX,México,América del Norte
+PER,Perú,América del Sur
+ITA,Italia,Europa
+CHL,Chile,América del Sur
+TUR,Turquía,Asia
+CAN,Canadá,América del Norte
+ESP,España,Europa
+XCF,Zonas francas de Colombia,Colombia
+COL,Zonas francas de Colombia,Colombia
+KOR,Corea del Sur,Asia
+DEU,Alemania,Europa
+PRI,Puerto Rico,América Central y Caribe
+VEN,Venezuela,América del Sur
+BEL,Bélgica,Europa
+DOM,República Dominicana,América Central y Caribe
+JPN,Japón,Asia
+GBR,Reino Unido,Europa
+GTM,Guatemala,América Central y Caribe
+ISR,Israel,Asia
+ARE,Emiratos Árabes Unidos,Asia
+POL,Polonia,Europa
+CRI,Costa Rica,América Central y Caribe
+ARG,Argentina,América del Sur
+MNP,Islas Marianas del Norte,Oceanía
+HKG,Hong Kong,Asia
+FRA,Francia,Europa
+BHS,Bahamas,América Central y Caribe
+BES,"Bonaire, San Eustaquio y Saba",América Central y Caribe
+LCA,Santa Lucía,América Central y Caribe
+CHE,Suiza,Europa
+TWN,Taiwán,Asia
+SLV,El Salvador,América Central y Caribe
+CIV,Costa de Marfil,África
+AUS,Australia,Oceanía
+JAM,Jamaica,América Central y Caribe
+EGY,Egipto,África
+MYS,Malasia,Asia
+HND,Honduras,América Central y Caribe
+SGS,Georgia del Sur y Sandwich del Sur,Otros
+BOL,Bolivia,América del Sur
+SGP,Singapur,Asia
+MAR,Marruecos,África
+RUS,Rusia,Europa
+FIN,Finlandia,Europa
+SAU,Arabia Saudita,Asia
+NOR,Noruega,Europa
+VIR,Islas Vírgenes de EE. UU.,América Central y Caribe
+IRL,Irlanda,Europa
+PRT,Portugal,Europa
+IRQ,Irak,Asia
+CUB,Cuba,América Central y Caribe
+SWE,Suecia,Europa
+ABW,Aruba,América Central y Caribe
+TTO,Trinidad y Tobago,América Central y Caribe
+URY,Uruguay,América del Sur
+NIC,Nicaragua,América Central y Caribe
+HTI,Haití,América Central y Caribe
+IDN,Indonesia,Asia
+BRN,Brunéi,Asia
+SVN,Eslovenia,Europa
+ZAF,Sudáfrica,África
+THA,Tailandia,Asia
+CUW,Curazao,América Central y Caribe
+GUY,Guyana,América del Sur
+PRY,Paraguay,América del Sur
+GRC,Grecia,Europa
+JOR,Jordania,Asia
+DNK,Dinamarca,Europa
+VNM,Vietnam,Asia
+UKR,Ucrania,Europa
+LBN,Líbano,Asia
+GAB,Gabón,África
+ROU,Rumania,Europa
+CMR,Camerún,África
+CYP,Chipre,Europa
+NZL,Nueva Zelanda,Oceanía
+GEO,Georgia,Asia
+GLP,Guadalupe,América Central y Caribe
+FJI,Fiyi,Oceanía
+PSE,Palestina,Asia
+KAZ,Kazajistán,Asia
+HRV,Croacia,Europa
+BGR,Bulgaria,Europa
+SUR,Surinam,América del Sur
+DZA,Argelia,África
+GIB,Gibraltar,Europa
+NGA,Nigeria,África
+PHL,Filipinas,Asia
+BRB,Barbados,América Central y Caribe
+EST,Estonia,Europa
+CYM,Islas Caimán,América Central y Caribe
+ALB,Albania,Europa
+CZE,Chequia,Europa
+LVA,Letonia,Europa
+KWT,Kuwait,Asia
+LBY,Libia,África
+PAK,Pakistán,Asia
+MTQ,Martinica,América Central y Caribe
+MLT,Malta,Europa
+VGB,Islas Vírgenes Británicas,América Central y Caribe
+COG,Congo,África
+SEN,Senegal,África
+MNE,Montenegro,Europa
+GHA,Ghana,África
+BLZ,Belice,América Central y Caribe
+AUT,Austria,Europa
+QAT,Catar,Asia
+NCL,Nueva Caledonia,Oceanía
+GIN,Guinea,África
+LTU,Lituania,Europa
+HUN,Hungría,Europa
+MOZ,Mozambique,África
+TGO,Togo,África
+VCT,San Vicente y las Granadinas,América Central y Caribe
+OMN,Omán,Asia
+TCA,Islas Turcas y Caicos,América Central y Caribe
+COD,República Democrática del Congo,África
+AGO,Angola,África
+ZWE,Zimbabue,África
+ETH,Etiopía,África
+BLR,Bielorrusia,Europa
+TON,Tonga,Oceanía
+ATG,Antigua y Barbuda,América Central y Caribe
+ERI,Eritrea,África
+TUN,Túnez,África
+DMA,Dominica,América Central y Caribe
+KEN,Kenia,África
+SVK,Eslovaquia,Europa
+DJI,Yibuti,África
+LUX,Luxemburgo,Europa
+BHR,Baréin,Asia
+VUT,Vanuatu,Oceanía
+BGD,Bangladés,Asia
+UGA,Uganda,África
+LBR,Liberia,África
+GRD,Granada,América Central y Caribe
+MRT,Mauritania,África
+TZA,Tanzania,África
+SLE,Sierra Leona,África
+GUF,Guayana Francesa,América del Sur
+PRK,Corea del Norte,Asia
+MUS,Mauricio,África
+MLI,Malí,África
+MMR,Birmania,Asia
+REU,Reunión,África
+ARM,Armenia,Asia
+SYR,Siria,Asia
+BMU,Bermudas,América del Norte
+LKA,Sri Lanka,Asia
+YEM,Yemen,Asia
+UZB,Uzbekistán,Asia
+ISL,Islandia,Europa
+KNA,San Cristóbal y Nieves,América Central y Caribe
+AIA,Anguila,América Central y Caribe
+MAC,Macao,Asia
+MDA,Moldavia,Europa
+CPV,Cabo Verde,África
+AZE,Azerbaiyán,Asia
+MKD,Macedonia del Norte,Europa
+MDG,Madagascar,África
+KGZ,Kirguistán,Asia
+BEN,Benín,África
+BWA,Botsuana,África
+LIE,Liechtenstein,Europa
+KHM,Camboya,Asia
+GNQ,Guinea Ecuatorial,África
+MSR,Montserrat,América Central y Caribe
+GNB,Guinea-Bisáu,África
+BIH,Bosnia y Herzegovina,Europa
+TCD,Chad,África
+GUM,Guam,Oceanía
+ZMB,Zambia,África
+MNG,Mongolia,Asia
+SRB,Serbia,Europa
+COM,Comoras,África
+NER,Níger,África
+SDN,Sudán,África
+BFA,Burkina Faso,África
+NAM,Namibia,África
+MCO,Mónaco,Europa
+MWI,Malaui,África
+SOM,Somalia,África
+PNG,Papúa Nueva Guinea,Oceanía
+TJK,Tayikistán,Asia
+IRN,Irán,Asia
+SJM,Svalbard y Jan Mayen,Europa
+MDV,Maldivas,Asia
+PYF,Polinesia Francesa,Oceanía
+TKM,Turkmenistán,Asia
+IMN,Isla de Man,Europa
+SWZ,Esuatini,África
+RWA,Ruanda,África
+BDI,Burundi,África
+BVT,Isla Bouvet,Otros
+SSD,Sudán del Sur,África
+NPL,Nepal,Asia
+SYC,Seychelles,África
+HMD,Islas Heard y McDonald,Otros
+SLB,Islas Salomón,Oceanía
+GMB,Gambia,África
+ASM,Samoa Americana,Oceanía
+AFG,Afganistán,Asia
+MHL,Islas Marshall,Oceanía
+IOT,Territorio Británico del Océano Índico,Otros
+CAF,República Centroafricana,África
+LAO,Laos,Asia
+SMR,San Marino,Europa
+FSM,Micronesia,Oceanía
+TLS,Timor Oriental,Asia
+AND,Andorra,Europa
+LSO,Lesoto,África
+STP,Santo Tomé y Príncipe,África
+OTR,Otros destinos (menos de 3 registros),Otros

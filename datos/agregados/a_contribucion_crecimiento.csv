@@ -1,0 +1,683 @@
+anio,capitulo,capitulo_nombre,fob_musd,fob_musd_anio_anterior,contribucion_pp,variacion_total_pct
+2020,01,Animales vivos,101.2024,24.5737,0.2564,-23.5215
+2020,02,Carne y despojos comestibles,81.8072,57.1263,0.0826,-23.5215
+2020,03,Pescados y crustáceos,90.7093,88.2359,0.0083,-23.5215
+2020,04,Leche y productos lácteos; huevos; miel,9.6398,7.8091,0.0061,-23.5215
+2020,05,Los demás productos de origen animal,25.4818,28.8685,-0.0113,-23.5215
+2020,06,Plantas vivas y flores,1097.3947,1168.366,-0.2374,-23.5215
+2020,07,Hortalizas,17.2956,19.6071,-0.0077,-23.5215
+2020,08,Frutas (banano y aguacate entre otras),889.8972,892.1663,-0.0076,-23.5215
+2020,09,"Café, té y especias",1819.779,1744.7869,0.2509,-23.5215
+2020,10,Cereales,4.9378,2.8551,0.007,-23.5215
+2020,11,Productos de la molinería,60.1333,50.9572,0.0307,-23.5215
+2020,12,Semillas y frutos oleaginosos,22.8764,30.0996,-0.0242,-23.5215
+2020,13,Gomas y resinas vegetales,4.5932,1.0028,0.012,-23.5215
+2020,14,Materias trenzables vegetales,0.2659,0.4242,-0.0005,-23.5215
+2020,15,Grasas y aceites animales o vegetales,471.7967,423.6208,0.1612,-23.5215
+2020,16,Preparaciones de carne o pescado,24.2465,13.2194,0.0369,-23.5215
+2020,17,Azúcares y confitería,355.4991,348.044,0.0249,-23.5215
+2020,18,Cacao y sus preparaciones,81.4189,78.759,0.0089,-23.5215
+2020,19,"Preparaciones de cereales, harina o leche",117.2004,100.7981,0.0549,-23.5215
+2020,20,Preparaciones de hortalizas y frutas,72.4041,73.0107,-0.002,-23.5215
+2020,21,Preparaciones alimenticias diversas,281.9493,240.1629,0.1398,-23.5215
+2020,22,"Bebidas, líquidos alcohólicos y vinagre",21.0653,26.7814,-0.0191,-23.5215
+2020,23,Residuos de la industria alimentaria; alimento para animales,26.1287,31.1931,-0.0169,-23.5215
+2020,24,Tabaco,11.6554,40.1229,-0.0952,-23.5215
+2020,25,"Sal, azufre, tierras, piedras, yesos y cementos",11.1044,12.4388,-0.0045,-23.5215
+2020,26,"Minerales metalíferos, escorias y cenizas",60.4706,37.5963,0.0765,-23.5215
+2020,27,Combustibles minerales (petróleo y carbón),10001.1965,16643.9648,-22.2248,-23.5215
+2020,28,Productos químicos inorgánicos,59.3487,76.0304,-0.0558,-23.5215
+2020,29,Productos químicos orgánicos,69.2074,93.1641,-0.0802,-23.5215
+2020,30,Productos farmacéuticos,269.5587,268.9244,0.0021,-23.5215
+2020,31,Abonos,33.9254,59.0362,-0.084,-23.5215
+2020,32,"Tintas, pinturas y colorantes",60.2017,71.0107,-0.0362,-23.5215
+2020,33,"Aceites esenciales, perfumería y cosméticos",302.7001,361.8823,-0.198,-23.5215
+2020,34,Jabones y productos de limpieza,132.7197,125.151,0.0253,-23.5215
+2020,35,Materias albuminoideas y colas,40.3288,35.0505,0.0177,-23.5215
+2020,36,Pólvora y explosivos,0.0523,0.0,0.0002,-23.5215
+2020,37,Productos fotográficos,0.2102,0.3185,-0.0004,-23.5215
+2020,38,Productos químicos diversos,321.5652,353.5925,-0.1072,-23.5215
+2020,39,Plástico y sus manufacturas,959.3846,1118.2634,-0.5316,-23.5215
+2020,40,Caucho y sus manufacturas,60.102,62.9334,-0.0095,-23.5215
+2020,41,Pieles y cueros,19.4621,39.4918,-0.067,-23.5215
+2020,42,Manufacturas de cuero; artículos de viaje,28.7375,49.5824,-0.0697,-23.5215
+2020,43,Peletería,3.2153,3.8879,-0.0023,-23.5215
+2020,44,Madera y sus manufacturas,30.9465,37.4475,-0.0218,-23.5215
+2020,45,Corcho,0.055,0.2294,-0.0006,-23.5215
+2020,46,Manufacturas de espartería y cestería,0.2279,0.4813,-0.0008,-23.5215
+2020,47,Pasta de madera,2.5646,0.3894,0.0073,-23.5215
+2020,48,Papel y cartón,175.2151,220.4078,-0.1512,-23.5215
+2020,49,Productos editoriales e impresos,20.1453,38.3501,-0.0609,-23.5215
+2020,51,Lana y pelo fino,0.0031,0.0111,-0.0,-23.5215
+2020,52,Algodón,5.6635,14.2883,-0.0289,-23.5215
+2020,53,Las demás fibras textiles vegetales,0.5907,3.5344,-0.0098,-23.5215
+2020,54,Filamentos sintéticos o artificiales,31.4765,50.8936,-0.065,-23.5215
+2020,55,Fibras sintéticas o artificiales discontinuas,7.3647,8.4953,-0.0038,-23.5215
+2020,56,"Guata, fieltro y cordelería",6.8484,10.4432,-0.012,-23.5215
+2020,57,Alfombras,0.4129,0.5196,-0.0004,-23.5215
+2020,58,Tejidos especiales,7.1138,12.3943,-0.0177,-23.5215
+2020,59,Telas impregnadas o recubiertas,20.9173,24.6792,-0.0126,-23.5215
+2020,60,Tejidos de punto,25.8904,45.3347,-0.0651,-23.5215
+2020,61,Prendas de vestir de punto,84.0055,121.3758,-0.125,-23.5215
+2020,62,Prendas de vestir excepto de punto,128.6805,203.5344,-0.2504,-23.5215
+2020,63,Los demás artículos textiles confeccionados,73.4794,48.3804,0.084,-23.5215
+2020,64,Calzado,13.4152,24.148,-0.0359,-23.5215
+2020,65,Sombreros,3.6453,4.2677,-0.0021,-23.5215
+2020,66,Paraguas y bastones,0.346,0.2866,0.0002,-23.5215
+2020,67,Plumas y flores artificiales,0.0427,0.0715,-0.0001,-23.5215
+2020,68,"Manufacturas de piedra, yeso y cemento",26.1448,34.4092,-0.0277,-23.5215
+2020,69,Productos cerámicos,44.1762,61.093,-0.0566,-23.5215
+2020,70,Vidrio y sus manufacturas,96.9315,107.6813,-0.036,-23.5215
+2020,71,"Piedras y metales preciosos (oro), bisutería",1986.3666,1371.6115,2.0568,-23.5215
+2020,72,Fundición de hierro y acero,331.0969,393.0291,-0.2072,-23.5215
+2020,73,Manufacturas de hierro o acero,100.8851,145.6342,-0.1497,-23.5215
+2020,74,Cobre y sus manufacturas,107.4086,140.8781,-0.112,-23.5215
+2020,75,Níquel y sus manufacturas,0.1243,0.0837,0.0001,-23.5215
+2020,76,Aluminio y sus manufacturas,225.9243,246.7369,-0.0696,-23.5215
+2020,78,Plomo y sus manufacturas,5.4476,4.5569,0.003,-23.5215
+2020,79,Cinc y sus manufacturas,0.2038,0.3454,-0.0005,-23.5215
+2020,80,Estaño y sus manufacturas,0.048,0.0708,-0.0001,-23.5215
+2020,81,Los demás metales comunes,0.8536,0.8775,-0.0001,-23.5215
+2020,82,Herramientas y cuchillería,35.0047,40.6304,-0.0188,-23.5215
+2020,83,Manufacturas diversas de metal,17.3739,21.9818,-0.0154,-23.5215
+2020,84,Máquinas y aparatos mecánicos,238.7385,292.9741,-0.1815,-23.5215
+2020,85,Máquinas y aparatos eléctricos,348.6752,357.8747,-0.0308,-23.5215
+2020,86,Vehículos y material para vías férreas,0.5833,0.5046,0.0003,-23.5215
+2020,87,"Vehículos automóviles, tractores y sus partes",252.8777,517.0913,-0.884,-23.5215
+2020,88,Aeronaves y sus partes,22.8089,55.3873,-0.109,-23.5215
+2020,89,Barcos y embarcaciones,1.6276,5.9783,-0.0146,-23.5215
+2020,90,"Instrumentos de óptica, medida y médicos",64.1094,71.2265,-0.0238,-23.5215
+2020,91,Relojería,1.1543,0.8457,0.001,-23.5215
+2020,92,Instrumentos musicales,0.3982,0.3429,0.0002,-23.5215
+2020,93,Armas y municiones,6.2679,19.1377,-0.0431,-23.5215
+2020,94,"Muebles, colchones y luminarias",74.8658,90.9692,-0.0539,-23.5215
+2020,95,Juguetes y artículos de deporte,10.5459,16.2402,-0.0191,-23.5215
+2020,96,Manufacturas diversas,87.669,100.7046,-0.0436,-23.5215
+2020,97,Objetos de arte y antigüedades,3.4931,4.9761,-0.005,-23.5215
+2020,98,Disposiciones especiales nacionales,4.9242,10.2108,-0.0177,-23.5215
+2020,OT,Otros capítulos (menos de 3 registros),0.0,0.0378,-0.0001,-23.5215
+2021,01,Animales vivos,109.7768,101.2024,0.0375,26.3877
+2021,02,Carne y despojos comestibles,177.7876,81.8072,0.4199,26.3877
+2021,03,Pescados y crustáceos,92.6247,90.7093,0.0084,26.3877
+2021,04,Leche y productos lácteos; huevos; miel,23.6319,9.6398,0.0612,26.3877
+2021,05,Los demás productos de origen animal,35.1433,25.4818,0.0423,26.3877
+2021,06,Plantas vivas y flores,1298.8251,1097.3947,0.8812,26.3877
+2021,07,Hortalizas,18.3003,17.2956,0.0044,26.3877
+2021,08,Frutas (banano y aguacate entre otras),1074.7315,889.8972,0.8086,26.3877
+2021,09,"Café, té y especias",2184.6321,1819.779,1.5961,26.3877
+2021,10,Cereales,5.0401,4.9378,0.0004,26.3877
+2021,11,Productos de la molinería,55.2803,60.1333,-0.0212,26.3877
+2021,12,Semillas y frutos oleaginosos,28.1876,22.8764,0.0232,26.3877
+2021,13,Gomas y resinas vegetales,4.2527,4.5932,-0.0015,26.3877
+2021,14,Materias trenzables vegetales,0.5895,0.2659,0.0014,26.3877
+2021,15,Grasas y aceites animales o vegetales,599.5919,471.7967,0.5591,26.3877
+2021,16,Preparaciones de carne o pescado,21.2922,24.2465,-0.0129,26.3877
+2021,17,Azúcares y confitería,342.0614,355.4991,-0.0588,26.3877
+2021,18,Cacao y sus preparaciones,91.8193,81.4189,0.0455,26.3877
+2021,19,"Preparaciones de cereales, harina o leche",113.4324,117.2004,-0.0165,26.3877
+2021,20,Preparaciones de hortalizas y frutas,91.0569,72.4041,0.0816,26.3877
+2021,21,Preparaciones alimenticias diversas,311.8096,281.9493,0.1306,26.3877
+2021,22,"Bebidas, líquidos alcohólicos y vinagre",29.5475,21.0653,0.0371,26.3877
+2021,23,Residuos de la industria alimentaria; alimento para animales,31.3817,26.1287,0.023,26.3877
+2021,24,Tabaco,11.0818,11.6554,-0.0025,26.3877
+2021,25,"Sal, azufre, tierras, piedras, yesos y cementos",14.0848,11.1044,0.013,26.3877
+2021,26,"Minerales metalíferos, escorias y cenizas",108.3216,60.4706,0.2093,26.3877
+2021,27,Combustibles minerales (petróleo y carbón),12929.5688,10001.1965,12.8108,26.3877
+2021,28,Productos químicos inorgánicos,78.744,59.3487,0.0848,26.3877
+2021,29,Productos químicos orgánicos,91.3196,69.2074,0.0967,26.3877
+2021,30,Productos farmacéuticos,282.9496,269.5587,0.0586,26.3877
+2021,31,Abonos,44.1878,33.9254,0.0449,26.3877
+2021,32,"Tintas, pinturas y colorantes",78.3792,60.2017,0.0795,26.3877
+2021,33,"Aceites esenciales, perfumería y cosméticos",340.5149,302.7001,0.1654,26.3877
+2021,34,Jabones y productos de limpieza,126.7143,132.7197,-0.0263,26.3877
+2021,35,Materias albuminoideas y colas,39.9797,40.3288,-0.0015,26.3877
+2021,36,Pólvora y explosivos,0.1247,0.0523,0.0003,26.3877
+2021,37,Productos fotográficos,0.21,0.2102,-0.0,26.3877
+2021,38,Productos químicos diversos,387.1776,321.5652,0.287,26.3877
+2021,39,Plástico y sus manufacturas,1425.4246,959.3846,2.0388,26.3877
+2021,40,Caucho y sus manufacturas,71.6783,60.102,0.0506,26.3877
+2021,41,Pieles y cueros,51.153,19.4621,0.1386,26.3877
+2021,42,Manufacturas de cuero; artículos de viaje,33.8271,28.7375,0.0223,26.3877
+2021,43,Peletería,4.8815,3.2153,0.0073,26.3877
+2021,44,Madera y sus manufacturas,41.1214,30.9465,0.0445,26.3877
+2021,45,Corcho,0.0836,0.055,0.0001,26.3877
+2021,46,Manufacturas de espartería y cestería,0.5683,0.2279,0.0015,26.3877
+2021,47,Pasta de madera,1.0026,2.5646,-0.0068,26.3877
+2021,48,Papel y cartón,185.282,175.2151,0.044,26.3877
+2021,49,Productos editoriales e impresos,26.5167,20.1453,0.0279,26.3877
+2021,51,Lana y pelo fino,0.0,0.0031,-0.0,26.3877
+2021,52,Algodón,10.3595,5.6635,0.0205,26.3877
+2021,53,Las demás fibras textiles vegetales,2.4788,0.5907,0.0083,26.3877
+2021,54,Filamentos sintéticos o artificiales,45.244,31.4765,0.0602,26.3877
+2021,55,Fibras sintéticas o artificiales discontinuas,7.8112,7.3647,0.002,26.3877
+2021,56,"Guata, fieltro y cordelería",10.5992,6.8484,0.0164,26.3877
+2021,57,Alfombras,1.3739,0.4129,0.0042,26.3877
+2021,58,Tejidos especiales,9.7223,7.1138,0.0114,26.3877
+2021,59,Telas impregnadas o recubiertas,28.2863,20.9173,0.0322,26.3877
+2021,60,Tejidos de punto,40.6999,25.8904,0.0648,26.3877
+2021,61,Prendas de vestir de punto,132.9659,84.0055,0.2142,26.3877
+2021,62,Prendas de vestir excepto de punto,217.6754,128.6805,0.3893,26.3877
+2021,63,Los demás artículos textiles confeccionados,63.8647,73.4794,-0.0421,26.3877
+2021,64,Calzado,20.6843,13.4152,0.0318,26.3877
+2021,65,Sombreros,6.5837,3.6453,0.0129,26.3877
+2021,66,Paraguas y bastones,0.3682,0.346,0.0001,26.3877
+2021,67,Plumas y flores artificiales,0.0361,0.0427,-0.0,26.3877
+2021,68,"Manufacturas de piedra, yeso y cemento",37.4053,26.1448,0.0493,26.3877
+2021,69,Productos cerámicos,59.6148,44.1762,0.0675,26.3877
+2021,70,Vidrio y sus manufacturas,123.4555,96.9315,0.116,26.3877
+2021,71,"Piedras y metales preciosos (oro), bisutería",2419.0028,1986.3666,1.8927,26.3877
+2021,72,Fundición de hierro y acero,426.4881,331.0969,0.4173,26.3877
+2021,73,Manufacturas de hierro o acero,161.1277,100.8851,0.2635,26.3877
+2021,74,Cobre y sus manufacturas,204.3729,107.4086,0.4242,26.3877
+2021,75,Níquel y sus manufacturas,0.1555,0.1243,0.0001,26.3877
+2021,76,Aluminio y sus manufacturas,334.7744,225.9243,0.4762,26.3877
+2021,78,Plomo y sus manufacturas,4.1827,5.4476,-0.0055,26.3877
+2021,79,Cinc y sus manufacturas,0.407,0.2038,0.0009,26.3877
+2021,80,Estaño y sus manufacturas,0.1649,0.048,0.0005,26.3877
+2021,81,Los demás metales comunes,1.1708,0.8536,0.0014,26.3877
+2021,82,Herramientas y cuchillería,50.1368,35.0047,0.0662,26.3877
+2021,83,Manufacturas diversas de metal,32.6255,17.3739,0.0667,26.3877
+2021,84,Máquinas y aparatos mecánicos,311.0574,238.7385,0.3164,26.3877
+2021,85,Máquinas y aparatos eléctricos,410.5456,348.6752,0.2707,26.3877
+2021,86,Vehículos y material para vías férreas,0.4695,0.5833,-0.0005,26.3877
+2021,87,"Vehículos automóviles, tractores y sus partes",235.7989,252.8777,-0.0747,26.3877
+2021,88,Aeronaves y sus partes,56.9649,22.8089,0.1494,26.3877
+2021,89,Barcos y embarcaciones,10.7001,1.6276,0.0397,26.3877
+2021,90,"Instrumentos de óptica, medida y médicos",62.1831,64.1094,-0.0084,26.3877
+2021,91,Relojería,1.2694,1.1543,0.0005,26.3877
+2021,92,Instrumentos musicales,0.0277,0.3982,-0.0016,26.3877
+2021,93,Armas y municiones,6.7697,6.2679,0.0022,26.3877
+2021,94,"Muebles, colchones y luminarias",99.3057,74.8658,0.1069,26.3877
+2021,95,Juguetes y artículos de deporte,23.697,10.5459,0.0575,26.3877
+2021,96,Manufacturas diversas,90.9221,87.669,0.0142,26.3877
+2021,97,Objetos de arte y antigüedades,2.4363,3.4931,-0.0046,26.3877
+2021,98,Disposiciones especiales nacionales,8.8329,4.9242,0.0171,26.3877
+2021,OT,Otros capítulos (menos de 3 registros),0.0099,0.0,0.0,26.3877
+2022,01,Animales vivos,246.5579,109.7768,0.4734,50.5429
+2022,02,Carne y despojos comestibles,143.7024,177.7876,-0.118,50.5429
+2022,03,Pescados y crustáceos,105.6319,92.6247,0.045,50.5429
+2022,04,Leche y productos lácteos; huevos; miel,15.1911,23.6319,-0.0292,50.5429
+2022,05,Los demás productos de origen animal,42.5675,35.1433,0.0257,50.5429
+2022,06,Plantas vivas y flores,1656.4629,1298.8251,1.2379,50.5429
+2022,07,Hortalizas,19.5989,18.3003,0.0045,50.5429
+2022,08,Frutas (banano y aguacate entre otras),1118.253,1074.7315,0.1506,50.5429
+2022,09,"Café, té y especias",3157.7399,2184.6321,3.3683,50.5429
+2022,10,Cereales,2.7077,5.0401,-0.0081,50.5429
+2022,11,Productos de la molinería,65.8264,55.2803,0.0365,50.5429
+2022,12,Semillas y frutos oleaginosos,34.6352,28.1876,0.0223,50.5429
+2022,13,Gomas y resinas vegetales,3.9772,4.2527,-0.001,50.5429
+2022,14,Materias trenzables vegetales,1.0405,0.5895,0.0016,50.5429
+2022,15,Grasas y aceites animales o vegetales,946.5645,599.5919,1.201,50.5429
+2022,16,Preparaciones de carne o pescado,24.9029,21.2922,0.0125,50.5429
+2022,17,Azúcares y confitería,448.844,342.0614,0.3696,50.5429
+2022,18,Cacao y sus preparaciones,98.038,91.8193,0.0215,50.5429
+2022,19,"Preparaciones de cereales, harina o leche",139.046,113.4324,0.0887,50.5429
+2022,20,Preparaciones de hortalizas y frutas,102.6578,91.0569,0.0402,50.5429
+2022,21,Preparaciones alimenticias diversas,396.3282,311.8096,0.2925,50.5429
+2022,22,"Bebidas, líquidos alcohólicos y vinagre",41.3534,29.5475,0.0409,50.5429
+2022,23,Residuos de la industria alimentaria; alimento para animales,52.5202,31.3817,0.0732,50.5429
+2022,24,Tabaco,4.6598,11.0818,-0.0222,50.5429
+2022,25,"Sal, azufre, tierras, piedras, yesos y cementos",19.0956,14.0848,0.0173,50.5429
+2022,26,"Minerales metalíferos, escorias y cenizas",155.8312,108.3216,0.1644,50.5429
+2022,27,Combustibles minerales (petróleo y carbón),23846.3147,12929.5688,37.7866,50.5429
+2022,28,Productos químicos inorgánicos,136.2099,78.744,0.1989,50.5429
+2022,29,Productos químicos orgánicos,143.8353,91.3196,0.1818,50.5429
+2022,30,Productos farmacéuticos,301.6092,282.9496,0.0646,50.5429
+2022,31,Abonos,77.1042,44.1878,0.1139,50.5429
+2022,32,"Tintas, pinturas y colorantes",92.1408,78.3792,0.0476,50.5429
+2022,33,"Aceites esenciales, perfumería y cosméticos",395.6616,340.5149,0.1909,50.5429
+2022,34,Jabones y productos de limpieza,173.559,126.7143,0.1621,50.5429
+2022,35,Materias albuminoideas y colas,46.9741,39.9797,0.0242,50.5429
+2022,36,Pólvora y explosivos,0.0,0.1247,-0.0004,50.5429
+2022,37,Productos fotográficos,0.3464,0.21,0.0005,50.5429
+2022,38,Productos químicos diversos,429.6951,387.1776,0.1472,50.5429
+2022,39,Plástico y sus manufacturas,1592.1009,1425.4246,0.5769,50.5429
+2022,40,Caucho y sus manufacturas,91.0122,71.6783,0.0669,50.5429
+2022,41,Pieles y cueros,39.1778,51.153,-0.0415,50.5429
+2022,42,Manufacturas de cuero; artículos de viaje,42.031,33.8271,0.0284,50.5429
+2022,43,Peletería,5.3998,4.8815,0.0018,50.5429
+2022,44,Madera y sus manufacturas,36.8291,41.1214,-0.0149,50.5429
+2022,45,Corcho,0.2052,0.0836,0.0004,50.5429
+2022,46,Manufacturas de espartería y cestería,0.8482,0.5683,0.001,50.5429
+2022,47,Pasta de madera,1.852,1.0026,0.0029,50.5429
+2022,48,Papel y cartón,268.1455,185.282,0.2868,50.5429
+2022,49,Productos editoriales e impresos,30.4686,26.5167,0.0137,50.5429
+2022,51,Lana y pelo fino,0.0304,0.0,0.0001,50.5429
+2022,52,Algodón,16.4457,10.3595,0.0211,50.5429
+2022,53,Las demás fibras textiles vegetales,0.8532,2.4788,-0.0056,50.5429
+2022,54,Filamentos sintéticos o artificiales,56.0881,45.244,0.0375,50.5429
+2022,55,Fibras sintéticas o artificiales discontinuas,8.7489,7.8112,0.0032,50.5429
+2022,56,"Guata, fieltro y cordelería",10.5571,10.5992,-0.0001,50.5429
+2022,57,Alfombras,1.001,1.3739,-0.0013,50.5429
+2022,58,Tejidos especiales,10.4186,9.7223,0.0024,50.5429
+2022,59,Telas impregnadas o recubiertas,38.7816,28.2863,0.0363,50.5429
+2022,60,Tejidos de punto,50.8729,40.6999,0.0352,50.5429
+2022,61,Prendas de vestir de punto,160.833,132.9659,0.0965,50.5429
+2022,62,Prendas de vestir excepto de punto,229.1003,217.6754,0.0395,50.5429
+2022,63,Los demás artículos textiles confeccionados,65.335,63.8647,0.0051,50.5429
+2022,64,Calzado,30.2881,20.6843,0.0332,50.5429
+2022,65,Sombreros,10.7841,6.5837,0.0145,50.5429
+2022,66,Paraguas y bastones,0.7683,0.3682,0.0014,50.5429
+2022,67,Plumas y flores artificiales,0.0823,0.0361,0.0002,50.5429
+2022,68,"Manufacturas de piedra, yeso y cemento",39.1344,37.4053,0.006,50.5429
+2022,69,Productos cerámicos,70.3169,59.6148,0.037,50.5429
+2022,70,Vidrio y sus manufacturas,129.4821,123.4555,0.0209,50.5429
+2022,71,"Piedras y metales preciosos (oro), bisutería",2274.7785,2419.0028,-0.4992,50.5429
+2022,72,Fundición de hierro y acero,819.5472,426.4881,1.3605,50.5429
+2022,73,Manufacturas de hierro o acero,211.4916,161.1277,0.1743,50.5429
+2022,74,Cobre y sus manufacturas,254.1057,204.3729,0.1721,50.5429
+2022,75,Níquel y sus manufacturas,0.1933,0.1555,0.0001,50.5429
+2022,76,Aluminio y sus manufacturas,527.5066,334.7744,0.6671,50.5429
+2022,78,Plomo y sus manufacturas,2.7595,4.1827,-0.0049,50.5429
+2022,79,Cinc y sus manufacturas,0.1366,0.407,-0.0009,50.5429
+2022,80,Estaño y sus manufacturas,0.1151,0.1649,-0.0002,50.5429
+2022,81,Los demás metales comunes,1.4526,1.1708,0.001,50.5429
+2022,82,Herramientas y cuchillería,52.4558,50.1368,0.008,50.5429
+2022,83,Manufacturas diversas de metal,39.765,32.6255,0.0247,50.5429
+2022,84,Máquinas y aparatos mecánicos,359.3806,311.0574,0.1673,50.5429
+2022,85,Máquinas y aparatos eléctricos,481.2345,410.5456,0.2447,50.5429
+2022,86,Vehículos y material para vías férreas,1.8116,0.4695,0.0046,50.5429
+2022,87,"Vehículos automóviles, tractores y sus partes",293.4608,235.7989,0.1996,50.5429
+2022,88,Aeronaves y sus partes,59.2587,56.9649,0.0079,50.5429
+2022,89,Barcos y embarcaciones,13.458,10.7001,0.0095,50.5429
+2022,90,"Instrumentos de óptica, medida y médicos",78.241,62.1831,0.0556,50.5429
+2022,91,Relojería,0.6097,1.2694,-0.0023,50.5429
+2022,92,Instrumentos musicales,0.0903,0.0277,0.0002,50.5429
+2022,93,Armas y municiones,3.4759,6.7697,-0.0114,50.5429
+2022,94,"Muebles, colchones y luminarias",126.7541,99.3057,0.095,50.5429
+2022,95,Juguetes y artículos de deporte,29.853,23.697,0.0213,50.5429
+2022,96,Manufacturas diversas,123.429,90.9221,0.1125,50.5429
+2022,97,Objetos de arte y antigüedades,4.0213,2.4363,0.0055,50.5429
+2022,98,Disposiciones especiales nacionales,8.0364,8.8329,-0.0028,50.5429
+2022,OT,Otros capítulos (menos de 3 registros),0.0237,0.0099,0.0,50.5429
+2023,01,Animales vivos,157.7537,246.5579,-0.2042,-14.9865
+2023,02,Carne y despojos comestibles,89.2054,143.7024,-0.1253,-14.9865
+2023,03,Pescados y crustáceos,127.4182,105.6319,0.0501,-14.9865
+2023,04,Leche y productos lácteos; huevos; miel,18.8986,15.1911,0.0085,-14.9865
+2023,05,Los demás productos de origen animal,42.9419,42.5675,0.0009,-14.9865
+2023,06,Plantas vivas y flores,1635.1763,1656.4629,-0.0489,-14.9865
+2023,07,Hortalizas,25.8922,19.5989,0.0145,-14.9865
+2023,08,Frutas (banano y aguacate entre otras),952.437,1118.253,-0.3813,-14.9865
+2023,09,"Café, té y especias",2182.8468,3157.7399,-2.2415,-14.9865
+2023,10,Cereales,2.8423,2.7077,0.0003,-14.9865
+2023,11,Productos de la molinería,69.9653,65.8264,0.0095,-14.9865
+2023,12,Semillas y frutos oleaginosos,35.4118,34.6352,0.0018,-14.9865
+2023,13,Gomas y resinas vegetales,2.5023,3.9772,-0.0034,-14.9865
+2023,14,Materias trenzables vegetales,1.3125,1.0405,0.0006,-14.9865
+2023,15,Grasas y aceites animales o vegetales,681.8306,946.5645,-0.6087,-14.9865
+2023,16,Preparaciones de carne o pescado,24.7366,24.9029,-0.0004,-14.9865
+2023,17,Azúcares y confitería,534.9185,448.844,0.1979,-14.9865
+2023,18,Cacao y sus preparaciones,95.9078,98.038,-0.0049,-14.9865
+2023,19,"Preparaciones de cereales, harina o leche",168.2484,139.046,0.0671,-14.9865
+2023,20,Preparaciones de hortalizas y frutas,125.8953,102.6578,0.0534,-14.9865
+2023,21,Preparaciones alimenticias diversas,411.3535,396.3282,0.0345,-14.9865
+2023,22,"Bebidas, líquidos alcohólicos y vinagre",47.7056,41.3534,0.0146,-14.9865
+2023,23,Residuos de la industria alimentaria; alimento para animales,56.8317,52.5202,0.0099,-14.9865
+2023,24,Tabaco,4.7796,4.6598,0.0003,-14.9865
+2023,25,"Sal, azufre, tierras, piedras, yesos y cementos",22.7241,19.0956,0.0083,-14.9865
+2023,26,"Minerales metalíferos, escorias y cenizas",315.5761,155.8312,0.3673,-14.9865
+2023,27,Combustibles minerales (petróleo y carbón),18602.2296,23846.3147,-12.0574,-14.9865
+2023,28,Productos químicos inorgánicos,112.4326,136.2099,-0.0547,-14.9865
+2023,29,Productos químicos orgánicos,142.1838,143.8353,-0.0038,-14.9865
+2023,30,Productos farmacéuticos,321.3319,301.6092,0.0453,-14.9865
+2023,31,Abonos,72.0838,77.1042,-0.0115,-14.9865
+2023,32,"Tintas, pinturas y colorantes",95.142,92.1408,0.0069,-14.9865
+2023,33,"Aceites esenciales, perfumería y cosméticos",441.0734,395.6616,0.1044,-14.9865
+2023,34,Jabones y productos de limpieza,183.2005,173.559,0.0222,-14.9865
+2023,35,Materias albuminoideas y colas,57.5876,46.9741,0.0244,-14.9865
+2023,36,Pólvora y explosivos,0.5404,0.0,0.0012,-14.9865
+2023,37,Productos fotográficos,0.2612,0.3464,-0.0002,-14.9865
+2023,38,Productos químicos diversos,420.9418,429.6951,-0.0201,-14.9865
+2023,39,Plástico y sus manufacturas,1127.0337,1592.1009,-1.0693,-14.9865
+2023,40,Caucho y sus manufacturas,82.5609,91.0122,-0.0194,-14.9865
+2023,41,Pieles y cueros,26.5328,39.1778,-0.0291,-14.9865
+2023,42,Manufacturas de cuero; artículos de viaje,38.8152,42.031,-0.0074,-14.9865
+2023,43,Peletería,4.7076,5.3998,-0.0016,-14.9865
+2023,44,Madera y sus manufacturas,39.748,36.8291,0.0067,-14.9865
+2023,45,Corcho,0.1367,0.2052,-0.0002,-14.9865
+2023,46,Manufacturas de espartería y cestería,0.9463,0.8482,0.0002,-14.9865
+2023,47,Pasta de madera,0.9229,1.852,-0.0021,-14.9865
+2023,48,Papel y cartón,285.926,268.1455,0.0409,-14.9865
+2023,49,Productos editoriales e impresos,35.7831,30.4686,0.0122,-14.9865
+2023,50,Seda,0.0075,0.0,0.0,-14.9865
+2023,51,Lana y pelo fino,0.011,0.0304,-0.0,-14.9865
+2023,52,Algodón,13.298,16.4457,-0.0072,-14.9865
+2023,53,Las demás fibras textiles vegetales,0.9952,0.8532,0.0003,-14.9865
+2023,54,Filamentos sintéticos o artificiales,50.8967,56.0881,-0.0119,-14.9865
+2023,55,Fibras sintéticas o artificiales discontinuas,8.9736,8.7489,0.0005,-14.9865
+2023,56,"Guata, fieltro y cordelería",10.5141,10.5571,-0.0001,-14.9865
+2023,57,Alfombras,0.9218,1.001,-0.0002,-14.9865
+2023,58,Tejidos especiales,7.6733,10.4186,-0.0063,-14.9865
+2023,59,Telas impregnadas o recubiertas,29.6586,38.7816,-0.021,-14.9865
+2023,60,Tejidos de punto,44.4627,50.8729,-0.0147,-14.9865
+2023,61,Prendas de vestir de punto,153.8939,160.833,-0.016,-14.9865
+2023,62,Prendas de vestir excepto de punto,188.9208,229.1003,-0.0924,-14.9865
+2023,63,Los demás artículos textiles confeccionados,61.9141,65.335,-0.0079,-14.9865
+2023,64,Calzado,29.6921,30.2881,-0.0014,-14.9865
+2023,65,Sombreros,11.1599,10.7841,0.0009,-14.9865
+2023,66,Paraguas y bastones,0.5092,0.7683,-0.0006,-14.9865
+2023,67,Plumas y flores artificiales,0.0537,0.0823,-0.0001,-14.9865
+2023,68,"Manufacturas de piedra, yeso y cemento",45.4612,39.1344,0.0145,-14.9865
+2023,69,Productos cerámicos,74.4787,70.3169,0.0096,-14.9865
+2023,70,Vidrio y sus manufacturas,137.465,129.4821,0.0184,-14.9865
+2023,71,"Piedras y metales preciosos (oro), bisutería",2674.473,2274.7785,0.919,-14.9865
+2023,72,Fundición de hierro y acero,581.8141,819.5472,-0.5466,-14.9865
+2023,73,Manufacturas de hierro o acero,179.1798,211.4916,-0.0743,-14.9865
+2023,74,Cobre y sus manufacturas,227.82,254.1057,-0.0604,-14.9865
+2023,75,Níquel y sus manufacturas,0.15,0.1933,-0.0001,-14.9865
+2023,76,Aluminio y sus manufacturas,666.9411,527.5066,0.3206,-14.9865
+2023,78,Plomo y sus manufacturas,6.8287,2.7595,0.0094,-14.9865
+2023,79,Cinc y sus manufacturas,2.1464,0.1366,0.0046,-14.9865
+2023,80,Estaño y sus manufacturas,0.0426,0.1151,-0.0002,-14.9865
+2023,81,Los demás metales comunes,1.2732,1.4526,-0.0004,-14.9865
+2023,82,Herramientas y cuchillería,48.9019,52.4558,-0.0082,-14.9865
+2023,83,Manufacturas diversas de metal,38.6593,39.765,-0.0025,-14.9865
+2023,84,Máquinas y aparatos mecánicos,382.3285,359.3806,0.0528,-14.9865
+2023,85,Máquinas y aparatos eléctricos,563.3306,481.2345,0.1888,-14.9865
+2023,86,Vehículos y material para vías férreas,0.4953,1.8116,-0.003,-14.9865
+2023,87,"Vehículos automóviles, tractores y sus partes",418.6549,293.4608,0.2879,-14.9865
+2023,88,Aeronaves y sus partes,15.9692,59.2587,-0.0995,-14.9865
+2023,89,Barcos y embarcaciones,6.7418,13.458,-0.0154,-14.9865
+2023,90,"Instrumentos de óptica, medida y médicos",67.9663,78.241,-0.0236,-14.9865
+2023,91,Relojería,0.4031,0.6097,-0.0005,-14.9865
+2023,92,Instrumentos musicales,0.1561,0.0903,0.0002,-14.9865
+2023,93,Armas y municiones,5.4697,3.4759,0.0046,-14.9865
+2023,94,"Muebles, colchones y luminarias",138.4916,126.7541,0.027,-14.9865
+2023,95,Juguetes y artículos de deporte,25.3613,29.853,-0.0103,-14.9865
+2023,96,Manufacturas diversas,110.8763,123.429,-0.0289,-14.9865
+2023,97,Objetos de arte y antigüedades,2.5613,4.0213,-0.0034,-14.9865
+2023,98,Disposiciones especiales nacionales,9.379,8.0364,0.0031,-14.9865
+2023,OT,Otros capítulos (menos de 3 registros),0.0,0.0237,-0.0001,-14.9865
+2024,01,Animales vivos,133.7072,157.7537,-0.065,-0.9029
+2024,02,Carne y despojos comestibles,71.7965,89.2054,-0.0471,-0.9029
+2024,03,Pescados y crustáceos,117.6253,127.4182,-0.0265,-0.9029
+2024,04,Leche y productos lácteos; huevos; miel,44.0874,18.8986,0.0681,-0.9029
+2024,05,Los demás productos de origen animal,45.772,42.9419,0.0077,-0.9029
+2024,06,Plantas vivas y flores,1831.6818,1635.1763,0.5315,-0.9029
+2024,07,Hortalizas,29.2645,25.8922,0.0091,-0.9029
+2024,08,Frutas (banano y aguacate entre otras),1377.2344,952.437,1.1489,-0.9029
+2024,09,"Café, té y especias",2436.771,2182.8468,0.6868,-0.9029
+2024,10,Cereales,12.8186,2.8423,0.027,-0.9029
+2024,11,Productos de la molinería,58.248,69.9653,-0.0317,-0.9029
+2024,12,Semillas y frutos oleaginosos,42.5376,35.4118,0.0193,-0.9029
+2024,13,Gomas y resinas vegetales,3.1561,2.5023,0.0018,-0.9029
+2024,14,Materias trenzables vegetales,1.5568,1.3125,0.0007,-0.9029
+2024,15,Grasas y aceites animales o vegetales,585.9368,681.8306,-0.2594,-0.9029
+2024,16,Preparaciones de carne o pescado,16.1346,24.7366,-0.0233,-0.9029
+2024,17,Azúcares y confitería,509.1203,534.9185,-0.0698,-0.9029
+2024,18,Cacao y sus preparaciones,195.3455,95.9078,0.2689,-0.9029
+2024,19,"Preparaciones de cereales, harina o leche",144.3834,168.2484,-0.0645,-0.9029
+2024,20,Preparaciones de hortalizas y frutas,147.5079,125.8953,0.0585,-0.9029
+2024,21,Preparaciones alimenticias diversas,382.0372,411.3535,-0.0793,-0.9029
+2024,22,"Bebidas, líquidos alcohólicos y vinagre",50.4449,47.7056,0.0074,-0.9029
+2024,23,Residuos de la industria alimentaria; alimento para animales,56.7057,56.8317,-0.0003,-0.9029
+2024,24,Tabaco,6.3432,4.7796,0.0042,-0.9029
+2024,25,"Sal, azufre, tierras, piedras, yesos y cementos",25.1853,22.7241,0.0067,-0.9029
+2024,26,"Minerales metalíferos, escorias y cenizas",159.5119,315.5761,-0.4221,-0.9029
+2024,27,Combustibles minerales (petróleo y carbón),16986.452,18602.2296,-4.37,-0.9029
+2024,28,Productos químicos inorgánicos,124.4936,112.4326,0.0326,-0.9029
+2024,29,Productos químicos orgánicos,157.3473,142.1838,0.041,-0.9029
+2024,30,Productos farmacéuticos,289.3015,321.3319,-0.0866,-0.9029
+2024,31,Abonos,56.6924,72.0838,-0.0416,-0.9029
+2024,32,"Tintas, pinturas y colorantes",106.7002,95.142,0.0313,-0.9029
+2024,33,"Aceites esenciales, perfumería y cosméticos",529.9635,441.0734,0.2404,-0.9029
+2024,34,Jabones y productos de limpieza,191.5447,183.2005,0.0226,-0.9029
+2024,35,Materias albuminoideas y colas,52.6619,57.5876,-0.0133,-0.9029
+2024,36,Pólvora y explosivos,0.0,0.5404,-0.0015,-0.9029
+2024,37,Productos fotográficos,0.4628,0.2612,0.0005,-0.9029
+2024,38,Productos químicos diversos,433.8757,420.9418,0.035,-0.9029
+2024,39,Plástico y sus manufacturas,1246.8141,1127.0337,0.324,-0.9029
+2024,40,Caucho y sus manufacturas,79.4614,82.5609,-0.0084,-0.9029
+2024,41,Pieles y cueros,22.8431,26.5328,-0.01,-0.9029
+2024,42,Manufacturas de cuero; artículos de viaje,32.8756,38.8152,-0.0161,-0.9029
+2024,43,Peletería,3.904,4.7076,-0.0022,-0.9029
+2024,44,Madera y sus manufacturas,38.266,39.748,-0.004,-0.9029
+2024,45,Corcho,0.1509,0.1367,0.0,-0.9029
+2024,46,Manufacturas de espartería y cestería,0.7658,0.9463,-0.0005,-0.9029
+2024,47,Pasta de madera,1.3151,0.9229,0.0011,-0.9029
+2024,48,Papel y cartón,289.0102,285.926,0.0083,-0.9029
+2024,49,Productos editoriales e impresos,42.1299,35.7831,0.0172,-0.9029
+2024,50,Seda,0.0,0.0075,-0.0,-0.9029
+2024,51,Lana y pelo fino,0.0061,0.011,-0.0,-0.9029
+2024,52,Algodón,9.2311,13.298,-0.011,-0.9029
+2024,53,Las demás fibras textiles vegetales,0.8589,0.9952,-0.0004,-0.9029
+2024,54,Filamentos sintéticos o artificiales,50.137,50.8967,-0.0021,-0.9029
+2024,55,Fibras sintéticas o artificiales discontinuas,7.1228,8.9736,-0.005,-0.9029
+2024,56,"Guata, fieltro y cordelería",10.698,10.5141,0.0005,-0.9029
+2024,57,Alfombras,1.9981,0.9218,0.0029,-0.9029
+2024,58,Tejidos especiales,7.5135,7.6733,-0.0004,-0.9029
+2024,59,Telas impregnadas o recubiertas,25.2498,29.6586,-0.0119,-0.9029
+2024,60,Tejidos de punto,48.0386,44.4627,0.0097,-0.9029
+2024,61,Prendas de vestir de punto,137.8689,153.8939,-0.0433,-0.9029
+2024,62,Prendas de vestir excepto de punto,162.7105,188.9208,-0.0709,-0.9029
+2024,63,Los demás artículos textiles confeccionados,69.2747,61.9141,0.0199,-0.9029
+2024,64,Calzado,28.8181,29.6921,-0.0024,-0.9029
+2024,65,Sombreros,13.5178,11.1599,0.0064,-0.9029
+2024,66,Paraguas y bastones,0.9788,0.5092,0.0013,-0.9029
+2024,67,Plumas y flores artificiales,0.0444,0.0537,-0.0,-0.9029
+2024,68,"Manufacturas de piedra, yeso y cemento",49.6991,45.4612,0.0115,-0.9029
+2024,69,Productos cerámicos,77.2093,74.4787,0.0074,-0.9029
+2024,70,Vidrio y sus manufacturas,121.0002,137.465,-0.0445,-0.9029
+2024,71,"Piedras y metales preciosos (oro), bisutería",2990.1452,2674.473,0.8538,-0.9029
+2024,72,Fundición de hierro y acero,472.9199,581.8141,-0.2945,-0.9029
+2024,73,Manufacturas de hierro o acero,217.9809,179.1798,0.1049,-0.9029
+2024,74,Cobre y sus manufacturas,305.861,227.82,0.2111,-0.9029
+2024,75,Níquel y sus manufacturas,0.2627,0.15,0.0003,-0.9029
+2024,76,Aluminio y sus manufacturas,620.8997,666.9411,-0.1245,-0.9029
+2024,78,Plomo y sus manufacturas,4.7535,6.8287,-0.0056,-0.9029
+2024,79,Cinc y sus manufacturas,0.5519,2.1464,-0.0043,-0.9029
+2024,80,Estaño y sus manufacturas,0.0463,0.0426,0.0,-0.9029
+2024,81,Los demás metales comunes,1.5683,1.2732,0.0008,-0.9029
+2024,82,Herramientas y cuchillería,47.5503,48.9019,-0.0037,-0.9029
+2024,83,Manufacturas diversas de metal,36.0239,38.6593,-0.0071,-0.9029
+2024,84,Máquinas y aparatos mecánicos,437.1395,382.3285,0.1482,-0.9029
+2024,85,Máquinas y aparatos eléctricos,734.0016,563.3306,0.4616,-0.9029
+2024,86,Vehículos y material para vías férreas,0.6404,0.4953,0.0004,-0.9029
+2024,87,"Vehículos automóviles, tractores y sus partes",369.3139,418.6549,-0.1334,-0.9029
+2024,88,Aeronaves y sus partes,38.649,15.9692,0.0613,-0.9029
+2024,89,Barcos y embarcaciones,4.5154,6.7418,-0.006,-0.9029
+2024,90,"Instrumentos de óptica, medida y médicos",91.165,67.9663,0.0627,-0.9029
+2024,91,Relojería,2.0639,0.4031,0.0045,-0.9029
+2024,92,Instrumentos musicales,0.1316,0.1561,-0.0001,-0.9029
+2024,93,Armas y municiones,6.6092,5.4697,0.0031,-0.9029
+2024,94,"Muebles, colchones y luminarias",128.5799,138.4916,-0.0268,-0.9029
+2024,95,Juguetes y artículos de deporte,16.104,25.3613,-0.025,-0.9029
+2024,96,Manufacturas diversas,107.8207,110.8763,-0.0083,-0.9029
+2024,97,Objetos de arte y antigüedades,3.4226,2.5613,0.0023,-0.9029
+2024,98,Disposiciones especiales nacionales,7.7308,9.379,-0.0045,-0.9029
+2024,OT,Otros capítulos (menos de 3 registros),0.4045,0.0,0.0011,-0.9029
+2025,01,Animales vivos,165.4323,133.7072,0.0866,1.9047
+2025,02,Carne y despojos comestibles,133.0349,71.7965,0.1671,1.9047
+2025,03,Pescados y crustáceos,116.924,117.6253,-0.0019,1.9047
+2025,04,Leche y productos lácteos; huevos; miel,45.6741,44.0874,0.0043,1.9047
+2025,05,Los demás productos de origen animal,38.8695,45.772,-0.0188,1.9047
+2025,06,Plantas vivas y flores,1890.8802,1831.6818,0.1616,1.9047
+2025,07,Hortalizas,27.81,29.2645,-0.004,1.9047
+2025,08,Frutas (banano y aguacate entre otras),1617.7387,1377.2344,0.6564,1.9047
+2025,09,"Café, té y especias",4315.715,2436.771,5.128,1.9047
+2025,10,Cereales,27.6439,12.8186,0.0405,1.9047
+2025,11,Productos de la molinería,60.2989,58.248,0.0056,1.9047
+2025,12,Semillas y frutos oleaginosos,39.6461,42.5376,-0.0079,1.9047
+2025,13,Gomas y resinas vegetales,2.2985,3.1561,-0.0023,1.9047
+2025,14,Materias trenzables vegetales,1.8099,1.5568,0.0007,1.9047
+2025,15,Grasas y aceites animales o vegetales,981.6544,585.9368,1.08,1.9047
+2025,16,Preparaciones de carne o pescado,20.0274,16.1346,0.0106,1.9047
+2025,17,Azúcares y confitería,540.61,509.1203,0.0859,1.9047
+2025,18,Cacao y sus preparaciones,324.1968,195.3455,0.3517,1.9047
+2025,19,"Preparaciones de cereales, harina o leche",162.8999,144.3834,0.0505,1.9047
+2025,20,Preparaciones de hortalizas y frutas,162.585,147.5079,0.0411,1.9047
+2025,21,Preparaciones alimenticias diversas,509.5598,382.0372,0.348,1.9047
+2025,22,"Bebidas, líquidos alcohólicos y vinagre",64.8293,50.4449,0.0393,1.9047
+2025,23,Residuos de la industria alimentaria; alimento para animales,85.4503,56.7057,0.0784,1.9047
+2025,24,Tabaco,9.8404,6.3432,0.0095,1.9047
+2025,25,"Sal, azufre, tierras, piedras, yesos y cementos",27.9135,25.1853,0.0074,1.9047
+2025,26,"Minerales metalíferos, escorias y cenizas",773.0634,159.5119,1.6745,1.9047
+2025,27,Combustibles minerales (petróleo y carbón),13385.5849,16986.452,-9.8275,1.9047
+2025,28,Productos químicos inorgánicos,127.0677,124.4936,0.007,1.9047
+2025,29,Productos químicos orgánicos,146.7443,157.3473,-0.0289,1.9047
+2025,30,Productos farmacéuticos,322.1686,289.3015,0.0897,1.9047
+2025,31,Abonos,65.2942,56.6924,0.0235,1.9047
+2025,32,"Tintas, pinturas y colorantes",122.8485,106.7002,0.0441,1.9047
+2025,33,"Aceites esenciales, perfumería y cosméticos",596.0912,529.9635,0.1805,1.9047
+2025,34,Jabones y productos de limpieza,213.779,191.5447,0.0607,1.9047
+2025,35,Materias albuminoideas y colas,60.7415,52.6619,0.0221,1.9047
+2025,36,Pólvora y explosivos,0.6578,0.0,0.0018,1.9047
+2025,37,Productos fotográficos,0.5038,0.4628,0.0001,1.9047
+2025,38,Productos químicos diversos,533.1644,433.8757,0.271,1.9047
+2025,39,Plástico y sus manufacturas,1303.947,1246.8141,0.1559,1.9047
+2025,40,Caucho y sus manufacturas,72.8271,79.4614,-0.0181,1.9047
+2025,41,Pieles y cueros,29.7632,22.8431,0.0189,1.9047
+2025,42,Manufacturas de cuero; artículos de viaje,39.065,32.8756,0.0169,1.9047
+2025,43,Peletería,4.1496,3.904,0.0007,1.9047
+2025,44,Madera y sus manufacturas,32.7431,38.266,-0.0151,1.9047
+2025,45,Corcho,0.1852,0.1509,0.0001,1.9047
+2025,46,Manufacturas de espartería y cestería,0.8361,0.7658,0.0002,1.9047
+2025,47,Pasta de madera,2.8532,1.3151,0.0042,1.9047
+2025,48,Papel y cartón,311.376,289.0102,0.061,1.9047
+2025,49,Productos editoriales e impresos,43.7017,42.1299,0.0043,1.9047
+2025,50,Seda,0.0231,0.0,0.0001,1.9047
+2025,51,Lana y pelo fino,0.0099,0.0061,0.0,1.9047
+2025,52,Algodón,11.6638,9.2311,0.0066,1.9047
+2025,53,Las demás fibras textiles vegetales,0.4957,0.8589,-0.001,1.9047
+2025,54,Filamentos sintéticos o artificiales,44.0816,50.137,-0.0165,1.9047
+2025,55,Fibras sintéticas o artificiales discontinuas,8.7053,7.1228,0.0043,1.9047
+2025,56,"Guata, fieltro y cordelería",12.1521,10.698,0.004,1.9047
+2025,57,Alfombras,1.6224,1.9981,-0.001,1.9047
+2025,58,Tejidos especiales,7.191,7.5135,-0.0009,1.9047
+2025,59,Telas impregnadas o recubiertas,20.3658,25.2498,-0.0133,1.9047
+2025,60,Tejidos de punto,48.0704,48.0386,0.0001,1.9047
+2025,61,Prendas de vestir de punto,147.5439,137.8689,0.0264,1.9047
+2025,62,Prendas de vestir excepto de punto,157.713,162.7105,-0.0136,1.9047
+2025,63,Los demás artículos textiles confeccionados,80.3475,69.2747,0.0302,1.9047
+2025,64,Calzado,28.0726,28.8181,-0.002,1.9047
+2025,65,Sombreros,15.9496,13.5178,0.0066,1.9047
+2025,66,Paraguas y bastones,0.4612,0.9788,-0.0014,1.9047
+2025,67,Plumas y flores artificiales,0.1921,0.0444,0.0004,1.9047
+2025,68,"Manufacturas de piedra, yeso y cemento",54.8751,49.6991,0.0141,1.9047
+2025,69,Productos cerámicos,78.4214,77.2093,0.0033,1.9047
+2025,70,Vidrio y sus manufacturas,103.1575,121.0002,-0.0487,1.9047
+2025,71,"Piedras y metales preciosos (oro), bisutería",3291.9879,2990.1452,0.8238,1.9047
+2025,72,Fundición de hierro y acero,425.6478,472.9199,-0.129,1.9047
+2025,73,Manufacturas de hierro o acero,193.1009,217.9809,-0.0679,1.9047
+2025,74,Cobre y sus manufacturas,299.6478,305.861,-0.017,1.9047
+2025,75,Níquel y sus manufacturas,0.3769,0.2627,0.0003,1.9047
+2025,76,Aluminio y sus manufacturas,664.1217,620.8997,0.118,1.9047
+2025,78,Plomo y sus manufacturas,10.7434,4.7535,0.0163,1.9047
+2025,79,Cinc y sus manufacturas,0.8617,0.5519,0.0008,1.9047
+2025,80,Estaño y sus manufacturas,1.482,0.0463,0.0039,1.9047
+2025,81,Los demás metales comunes,1.3972,1.5683,-0.0005,1.9047
+2025,82,Herramientas y cuchillería,51.9785,47.5503,0.0121,1.9047
+2025,83,Manufacturas diversas de metal,38.8701,36.0239,0.0078,1.9047
+2025,84,Máquinas y aparatos mecánicos,472.7007,437.1395,0.0971,1.9047
+2025,85,Máquinas y aparatos eléctricos,820.4347,734.0016,0.2359,1.9047
+2025,86,Vehículos y material para vías férreas,1.6259,0.6404,0.0027,1.9047
+2025,87,"Vehículos automóviles, tractores y sus partes",298.9262,369.3139,-0.1921,1.9047
+2025,88,Aeronaves y sus partes,29.512,38.649,-0.0249,1.9047
+2025,89,Barcos y embarcaciones,8.2028,4.5154,0.0101,1.9047
+2025,90,"Instrumentos de óptica, medida y médicos",72.2654,91.165,-0.0516,1.9047
+2025,91,Relojería,4.5282,2.0639,0.0067,1.9047
+2025,92,Instrumentos musicales,0.124,0.1316,-0.0,1.9047
+2025,93,Armas y municiones,2.5625,6.6092,-0.011,1.9047
+2025,94,"Muebles, colchones y luminarias",124.0744,128.5799,-0.0123,1.9047
+2025,95,Juguetes y artículos de deporte,12.2303,16.104,-0.0106,1.9047
+2025,96,Manufacturas diversas,116.5117,107.8207,0.0237,1.9047
+2025,97,Objetos de arte y antigüedades,2.9057,3.4226,-0.0014,1.9047
+2025,98,Disposiciones especiales nacionales,8.2379,7.7308,0.0014,1.9047
+2025,OT,Otros capítulos (menos de 3 registros),0.0,0.4045,-0.0011,1.9047
+2026,01,Animales vivos,137.8982,165.4323,-0.0737,13.2921
+2026,02,Carne y despojos comestibles,96.3511,133.0349,-0.0982,13.2921
+2026,03,Pescados y crustáceos,135.673,116.924,0.0502,13.2921
+2026,04,Leche y productos lácteos; huevos; miel,58.7335,45.6741,0.035,13.2921
+2026,05,Los demás productos de origen animal,30.3819,38.8695,-0.0227,13.2921
+2026,06,Plantas vivas y flores,1881.4586,1890.8802,-0.0252,13.2921
+2026,07,Hortalizas,30.5788,27.81,0.0074,13.2921
+2026,08,Frutas (banano y aguacate entre otras),1659.9511,1617.7387,0.1131,13.2921
+2026,09,"Café, té y especias",3856.5392,4315.715,-1.2298,13.2921
+2026,10,Cereales,34.8388,27.6439,0.0193,13.2921
+2026,11,Productos de la molinería,55.7291,60.2989,-0.0122,13.2921
+2026,12,Semillas y frutos oleaginosos,45.6292,39.6461,0.016,13.2921
+2026,13,Gomas y resinas vegetales,2.6023,2.2985,0.0008,13.2921
+2026,14,Materias trenzables vegetales,1.1312,1.8099,-0.0018,13.2921
+2026,15,Grasas y aceites animales o vegetales,1147.7805,981.6544,0.4449,13.2921
+2026,16,Preparaciones de carne o pescado,9.9948,20.0274,-0.0269,13.2921
+2026,17,Azúcares y confitería,493.9513,540.61,-0.125,13.2921
+2026,18,Cacao y sus preparaciones,200.678,324.1968,-0.3308,13.2921
+2026,19,"Preparaciones de cereales, harina o leche",154.7322,162.8999,-0.0219,13.2921
+2026,20,Preparaciones de hortalizas y frutas,166.509,162.585,0.0105,13.2921
+2026,21,Preparaciones alimenticias diversas,599.4399,509.5598,0.2407,13.2921
+2026,22,"Bebidas, líquidos alcohólicos y vinagre",73.4335,64.8293,0.023,13.2921
+2026,23,Residuos de la industria alimentaria; alimento para animales,91.0712,85.4503,0.0151,13.2921
+2026,24,Tabaco,12.4419,9.8404,0.007,13.2921
+2026,25,"Sal, azufre, tierras, piedras, yesos y cementos",30.3309,27.9135,0.0065,13.2921
+2026,26,"Minerales metalíferos, escorias y cenizas",919.9757,773.0634,0.3935,13.2921
+2026,27,Combustibles minerales (petróleo y carbón),15504.107,13385.5849,5.6738,13.2921
+2026,28,Productos químicos inorgánicos,113.7026,127.0677,-0.0358,13.2921
+2026,29,Productos químicos orgánicos,137.9995,146.7443,-0.0234,13.2921
+2026,30,Productos farmacéuticos,382.4841,322.1686,0.1615,13.2921
+2026,31,Abonos,49.6213,65.2942,-0.042,13.2921
+2026,32,"Tintas, pinturas y colorantes",134.3516,122.8485,0.0308,13.2921
+2026,33,"Aceites esenciales, perfumería y cosméticos",608.993,596.0912,0.0346,13.2921
+2026,34,Jabones y productos de limpieza,230.3178,213.779,0.0443,13.2921
+2026,35,Materias albuminoideas y colas,63.8863,60.7415,0.0084,13.2921
+2026,36,Pólvora y explosivos,1.0532,0.6578,0.0011,13.2921
+2026,37,Productos fotográficos,0.3444,0.5038,-0.0004,13.2921
+2026,38,Productos químicos diversos,509.1982,533.1644,-0.0642,13.2921
+2026,39,Plástico y sus manufacturas,1420.1964,1303.947,0.3113,13.2921
+2026,40,Caucho y sus manufacturas,46.9629,72.8271,-0.0693,13.2921
+2026,41,Pieles y cueros,25.4502,29.7632,-0.0116,13.2921
+2026,42,Manufacturas de cuero; artículos de viaje,28.4156,39.065,-0.0285,13.2921
+2026,43,Peletería,4.5371,4.1496,0.001,13.2921
+2026,44,Madera y sus manufacturas,23.6636,32.7431,-0.0243,13.2921
+2026,45,Corcho,0.0895,0.1852,-0.0003,13.2921
+2026,46,Manufacturas de espartería y cestería,0.8408,0.8361,0.0,13.2921
+2026,47,Pasta de madera,0.2043,2.8532,-0.0071,13.2921
+2026,48,Papel y cartón,286.1333,311.376,-0.0676,13.2921
+2026,49,Productos editoriales e impresos,51.6401,43.7017,0.0213,13.2921
+2026,50,Seda,0.0104,0.0231,-0.0,13.2921
+2026,51,Lana y pelo fino,0.0394,0.0099,0.0001,13.2921
+2026,52,Algodón,7.6879,11.6638,-0.0106,13.2921
+2026,53,Las demás fibras textiles vegetales,1.1622,0.4957,0.0018,13.2921
+2026,54,Filamentos sintéticos o artificiales,40.5069,44.0816,-0.0096,13.2921
+2026,55,Fibras sintéticas o artificiales discontinuas,8.0599,8.7053,-0.0017,13.2921
+2026,56,"Guata, fieltro y cordelería",10.8535,12.1521,-0.0035,13.2921
+2026,57,Alfombras,1.0712,1.6224,-0.0015,13.2921
+2026,58,Tejidos especiales,7.1199,7.191,-0.0002,13.2921
+2026,59,Telas impregnadas o recubiertas,17.7033,20.3658,-0.0071,13.2921
+2026,60,Tejidos de punto,36.1458,48.0704,-0.0319,13.2921
+2026,61,Prendas de vestir de punto,150.0712,147.5439,0.0068,13.2921
+2026,62,Prendas de vestir excepto de punto,156.98,157.713,-0.002,13.2921
+2026,63,Los demás artículos textiles confeccionados,72.8594,80.3475,-0.0201,13.2921
+2026,64,Calzado,28.1028,28.0726,0.0001,13.2921
+2026,65,Sombreros,15.994,15.9496,0.0001,13.2921
+2026,66,Paraguas y bastones,0.2068,0.4612,-0.0007,13.2921
+2026,67,Plumas y flores artificiales,0.1431,0.1921,-0.0001,13.2921
+2026,68,"Manufacturas de piedra, yeso y cemento",52.2881,54.8751,-0.0069,13.2921
+2026,69,Productos cerámicos,76.0683,78.4214,-0.0063,13.2921
+2026,70,Vidrio y sus manufacturas,107.7326,103.1575,0.0123,13.2921
+2026,71,"Piedras y metales preciosos (oro), bisutería",6294.1683,3291.9879,8.0404,13.2921
+2026,72,Fundición de hierro y acero,343.3162,425.6478,-0.2205,13.2921
+2026,73,Manufacturas de hierro o acero,223.1575,193.1009,0.0805,13.2921
+2026,74,Cobre y sus manufacturas,332.8837,299.6478,0.089,13.2921
+2026,75,Níquel y sus manufacturas,0.092,0.3769,-0.0008,13.2921
+2026,76,Aluminio y sus manufacturas,688.5477,664.1217,0.0654,13.2921
+2026,78,Plomo y sus manufacturas,9.8939,10.7434,-0.0023,13.2921
+2026,79,Cinc y sus manufacturas,1.4093,0.8617,0.0015,13.2921
+2026,80,Estaño y sus manufacturas,0.3553,1.482,-0.003,13.2921
+2026,81,Los demás metales comunes,1.9338,1.3972,0.0014,13.2921
+2026,82,Herramientas y cuchillería,54.6606,51.9785,0.0072,13.2921
+2026,83,Manufacturas diversas de metal,42.106,38.8701,0.0087,13.2921
+2026,84,Máquinas y aparatos mecánicos,469.022,472.7007,-0.0099,13.2921
+2026,85,Máquinas y aparatos eléctricos,759.7602,820.4347,-0.1625,13.2921
+2026,86,Vehículos y material para vías férreas,1.6446,1.6259,0.0001,13.2921
+2026,87,"Vehículos automóviles, tractores y sus partes",371.551,298.9262,0.1945,13.2921
+2026,88,Aeronaves y sus partes,17.4804,29.512,-0.0322,13.2921
+2026,89,Barcos y embarcaciones,33.1601,8.2028,0.0668,13.2921
+2026,90,"Instrumentos de óptica, medida y médicos",69.6864,72.2654,-0.0069,13.2921
+2026,91,Relojería,4.8169,4.5282,0.0008,13.2921
+2026,92,Instrumentos musicales,0.1119,0.124,-0.0,13.2921
+2026,93,Armas y municiones,7.6498,2.5625,0.0136,13.2921
+2026,94,"Muebles, colchones y luminarias",123.8603,124.0744,-0.0006,13.2921
+2026,95,Juguetes y artículos de deporte,12.6998,12.2303,0.0013,13.2921
+2026,96,Manufacturas diversas,85.0577,116.5117,-0.0842,13.2921
+2026,97,Objetos de arte y antigüedades,1.4795,2.9057,-0.0038,13.2921
+2026,98,Disposiciones especiales nacionales,8.4154,8.2379,0.0005,13.2921

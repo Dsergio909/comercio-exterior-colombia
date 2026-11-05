@@ -1,0 +1,36 @@
+codigo,departamento,region,latitud,longitud
+05,Antioquia,Andina,6.544,-75.5605
+08,Atlántico,Caribe,10.6985,-74.9037
+11,Bogotá D.C.,Andina,4.6493,-74.107
+13,Bolívar,Caribe,9.3489,-74.6495
+15,Boyacá,Andina,5.6666,-73.2085
+17,Caldas,Andina,5.2831,-75.4375
+18,Caquetá,Amazonía,1.3977,-75.4928
+19,Cauca,Pacífico,2.4979,-76.6742
+20,Cesar,Caribe,9.3046,-73.5413
+23,Córdoba,Caribe,8.7601,-75.7322
+25,Cundinamarca,Andina,4.8187,-74.1817
+27,Chocó,Pacífico,5.8009,-76.8245
+41,Huila,Andina,2.4318,-75.6591
+44,La Guajira,Caribe,11.0488,-72.8037
+47,Magdalena,Caribe,10.1258,-74.482
+50,Meta,Orinoquía,3.6726,-73.487
+52,Nariño,Pacífico,1.4005,-77.5708
+54,Norte de Santander,Andina,7.8526,-72.8221
+63,Quindío,Andina,4.4936,-75.7013
+66,Risaralda,Andina,5.0611,-75.8441
+68,Santander,Andina,6.5542,-73.2616
+70,Sucre,Caribe,9.1955,-75.2087
+73,Tolima,Andina,4.3234,-75.0413
+76,Valle del Cauca,Pacífico,4.1114,-76.2371
+81,Arauca,Orinoquía,6.6984,-71.2683
+85,Casanare,Orinoquía,5.3789,-72.3045
+86,Putumayo,Amazonía,0.7912,-76.6176
+88,San Andrés y Providencia,Caribe,12.9756,-81.5378
+91,Amazonas,Amazonía,-1.8171,-71.4542
+94,Guainía,Amazonía,2.6612,-68.2092
+95,Guaviare,Amazonía,2.0487,-72.468
+97,Vaupés,Amazonía,0.707,-70.3565
+99,Vichada,Orinoquía,5.3139,-69.6382
+00,Petróleo y derivados (sin departamento),Sin departamento,,
+OT,Otros departamentos (menos de 3 registros),Otros,,

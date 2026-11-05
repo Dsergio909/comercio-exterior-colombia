@@ -1,0 +1,55 @@
+/// País de destino (código ISO de 3 letras).
+table dim_pais
+	lineageTag: 9e820e53-5419-529e-875f-9528f806bbb1
+
+	column codigo
+		dataType: string
+		isHidden
+		lineageTag: 6a4e8f56-7c0d-5f58-a665-657a66d9f5b6
+		summarizeBy: none
+		sourceColumn: codigo
+
+		annotation SummarizationSetBy = Automatic
+
+	column País
+		dataType: string
+		lineageTag: 5865347f-307d-5907-b9a6-381bc6db7c00
+		summarizeBy: none
+		sourceColumn: País
+
+		annotation SummarizationSetBy = Automatic
+
+	column Continente
+		dataType: string
+		lineageTag: 134df1ec-c24e-564b-9771-d1cebf634a02
+		summarizeBy: none
+		sourceColumn: Continente
+
+		annotation SummarizationSetBy = Automatic
+
+	/// No = vacío, Islas Marianas del Norte o Georgias del Sur.
+	column 'País confiable'
+		dataType: string
+		lineageTag: 8761529a-1410-5f74-99e3-baa507ba9c31
+		summarizeBy: none
+		sourceColumn: País confiable
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_pais = m
+		mode: import
+		source =
+				let
+				    Origen = Csv.Document(File.Contents(CarpetaDatos & "referencia\paises.csv"), [Delimiter = ",", Columns = 3, Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Encabezados = Table.PromoteHeaders(Origen, [PromoteAllScalars = true]),
+				    Tipos = Table.TransformColumnTypes(Encabezados, {{"codigo", type text}, {"pais_es", type text}, {"continente", type text}}, "en-US"),
+				    // Fila para el país vacío de los microdatos
+				    ConVacio = Table.InsertRows(Tipos, 0, {[codigo = "(vacío)", pais_es = "Sin país en los microdatos", continente = "Sin país"]}),
+				    // Dos zonas francas comparten nombre; se deja una sola fila por código
+				    Unicos = Table.Distinct(ConVacio, {"codigo"}),
+				    Confiable = Table.AddColumn(Unicos, "País confiable", each if List.Contains({"(vacío)", "MNP", "SGS"}, [codigo]) then "No" else "Sí", type text),
+				    Nombres = Table.RenameColumns(Confiable, {{"pais_es", "País"}, {"continente", "Continente"}})
+				in
+				    Nombres
+
+	annotation PBI_ResultType = Table

@@ -1,0 +1,57 @@
+/// Hechos: exportaciones por mes y país de destino (fuente: DANE, microdatos EXPO).
+table destinos
+	lineageTag: 33fe5c13-76ff-55bd-b5f8-dc115a09ce62
+
+	/// Primer día del mes.
+	column periodo
+		dataType: dateTime
+		formatString: mmm yyyy
+		lineageTag: d6230e98-4575-5169-aeef-65cdf2635750
+		summarizeBy: none
+		sourceColumn: periodo
+
+		annotation SummarizationSetBy = Automatic
+
+	column pais
+		dataType: string
+		isHidden
+		lineageTag: 5ef0715d-eccd-59ab-823b-a1d77ecd8555
+		summarizeBy: none
+		sourceColumn: pais
+
+		annotation SummarizationSetBy = Automatic
+
+	column fob_usd
+		dataType: double
+		formatString: #,0
+		isHidden
+		lineageTag: 0906a502-1b2e-5ca1-936f-2e039cdc143a
+		summarizeBy: sum
+		sourceColumn: fob_usd
+
+		annotation SummarizationSetBy = Automatic
+
+	column kilos_netos
+		dataType: double
+		formatString: #,0
+		isHidden
+		lineageTag: e71c738a-23a3-51a8-914b-fa172943f106
+		summarizeBy: sum
+		sourceColumn: kilos_netos
+
+		annotation SummarizationSetBy = Automatic
+
+	partition destinos = m
+		mode: import
+		source =
+				let
+				    // Exportaciones por mes y país de destino (sale de sql/11_powerbi.sql; las celdas de menos de 3 registros ya vienen en «Otros»)
+				    Origen = Parquet.Document(File.Contents(CarpetaDatos & "powerbi\destinos.parquet")),
+				    Tipos = Table.TransformColumnTypes(Origen, {{"periodo", type date}, {"pais", type text}, {"fob_usd", type number}, {"kilos_netos", type number}}),
+				    // El DANE deja el país vacío en algunas filas; se marca para que no quede en blanco
+				    Vacio = Table.ReplaceValue(Tipos, "", "(vacío)", Replacer.ReplaceValue, {"pais"}),
+				    SinEspacios = Table.TransformColumns(Vacio, {{"pais", Text.Trim, type text}})
+				in
+				    SinEspacios
+
+	annotation PBI_ResultType = Table

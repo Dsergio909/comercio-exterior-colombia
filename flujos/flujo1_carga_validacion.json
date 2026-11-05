@@ -1,0 +1,371 @@
+{
+  "id": "ceCargaDane00001",
+  "name": "Comercio exterior 1 · Vigilar el DANE, cargar y validar",
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "errorWorkflow": "ceAvisoError0001",
+    "timezone": "America/Bogota",
+    "saveManualExecutions": true
+  },
+  "nodes": [
+    {
+      "id": "a1000000-0000-4000-8000-000000000001",
+      "name": "Cada mañana",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [0, 0],
+      "parameters": {
+        "rule": { "interval": [ { "field": "days", "daysInterval": 1, "triggerAtHour": 8 } ] }
+      }
+    },
+    {
+      "id": "a1000000-0000-4000-8000-000000000002",
+      "name": "A mano (webhook)",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [0, 200],
+      "webhookId": "5d0e6b8e-1c1a-4f3e-9a52-ce0000000001",
+      "parameters": { "httpMethod": "POST", "path": "ce-carga", "responseMode": "onReceived", "options": {} }
+    },
+    {
+      "id": "a1000000-0000-4000-8000-000000000003",
+      "name": "Catálogos del DANE",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [240, 100],
+      "parameters": {
+        "jsCode": "// Páginas que se vigilan. La descarga tiene captcha: n8n no la salta.\n// Solo revisa si el DANE publicó algo nuevo y le avisa a la persona.\nreturn [\n  { json: { catalogo: '859', flujo: 'expo', url: 'https://microdatos.dane.gov.co/index.php/catalog/859/get-microdata' } },\n  { json: { catalogo: '856', flujo: 'impo', url: 'https://microdatos.dane.gov.co/index.php/catalog/856/get-microdata' } }\n];"
+      }
+    },
+    {
+      "id": "a1000000-0000-4000-8000-000000000004",
+      "name": "Leer página del DANE",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [460, 100],
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 5000,
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "url": "={{ $json.url }}",
+        "options": {
+          "timeout": 60000,
+          "response": { "response": { "responseFormat": "text", "outputPropertyName": "html" } }
+        }
+      }
+    },
+    {
+      "id": "a1000000-0000-4000-8000-000000000005",
+      "name": "Sacar fecha y archivos",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [680, 100],
+      "parameters": {
+        "jsCode": "const catalogos = $('Catálogos del DANE').all();\nreturn $input.all().map((item, i) => {\n  const c = catalogos[i].json;\n  const html = item.json.html || '';\n  if (!html) {\n    return { json: { ...c, error: 'No se pudo leer la página del DANE', modificado: null, archivos: [] } };\n  }\n  const texto = html.replace(/<[^>]+>/g, ' ').replace(/\\s+/g, ' ');\n  const m = texto.match(/ltima modificaci[oó]n\\s+([A-Za-z]+ \\d{1,2}, \\d{4})/);\n  const archivos = [...new Set([...html.matchAll(/mostrarModal\\('([^']+\\.zip)'/g)].map(x => x[1]))];\n  return { json: { catalogo: c.catalogo, flujo: c.flujo, url: c.url, modificado: m ? m[1] : null, archivos } };\n});"
+      }
+    },
+    {
+      "id": "a1000000-0000-4000-8000-000000000006",
+      "name": "Comparar con lo que ya sabía",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [900, 100],
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 3000,
+      "parameters": {
+        "method": "POST",
+        "url": "={{ ($env.PIPELINE_URL || 'http://127.0.0.1:5688') + '/dane/comparar' }}",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ catalogo: $json.catalogo, modificado: $json.modificado, archivos: $json.archivos }) }}",
+        "options": { "timeout": 30000 }
+      }
+    },
+    {
+      "id": "a1000000-0000-4000-8000-000000000007",
+      "name": "Archivos por cargar",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1120, 100],
+      "executeOnce": true,
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 3000,
+      "parameters": {
+        "url": "={{ ($env.PIPELINE_URL || 'http://127.0.0.1:5688') + '/dane/pendientes' }}",
+        "options": { "timeout": 30000 }
+      }
+    },
+    {
+      "id": "a1000000-0000-4000-8000-000000000008",
+      "name": "¿Hay .zip nuevos?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [1340, 100],
+      "parameters": {
+        "conditions": {
+          "options": { "caseSensitive": true, "leftValue": "", "typeValidation": "loose", "version": 2 },
+          "conditions": [
+            {
+              "id": "c1000000-0000-4000-8000-000000000001",
+              "leftValue": "={{ $json.cantidad }}",
+              "rightValue": 0,
+              "operator": { "type": "number", "operation": "gt" }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "a1000000-0000-4000-8000-000000000009",
+      "name": "Cargar a la base",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1560, 0],
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 10000,
+      "parameters": {
+        "method": "POST",
+        "url": "={{ ($env.PIPELINE_URL || 'http://127.0.0.1:5688') + '/pipeline/cargar' }}",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{}",
+        "options": { "timeout": 3600000 }
+      }
+    },
+    {
+      "id": "a1000000-0000-4000-8000-000000000010",
+      "name": "Validar (controles SQL)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1780, 0],
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 5000,
+      "parameters": {
+        "method": "POST",
+        "url": "={{ ($env.PIPELINE_URL || 'http://127.0.0.1:5688') + '/pipeline/validar' }}",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{}",
+        "options": { "timeout": 600000 }
+      }
+    },
+    {
+      "id": "a1000000-0000-4000-8000-000000000011",
+      "name": "¿Pasó la validación?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [2000, 0],
+      "parameters": {
+        "conditions": {
+          "options": { "caseSensitive": true, "leftValue": "", "typeValidation": "loose", "version": 2 },
+          "conditions": [
+            {
+              "id": "c1000000-0000-4000-8000-000000000002",
+              "leftValue": "={{ $json.estado }}",
+              "rightValue": "error",
+              "operator": { "type": "string", "operation": "notEquals" }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "a1000000-0000-4000-8000-000000000012",
+      "name": "Exportar agregados",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [2220, -100],
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 5000,
+      "parameters": {
+        "method": "POST",
+        "url": "={{ ($env.PIPELINE_URL || 'http://127.0.0.1:5688') + '/pipeline/exportar' }}",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{}",
+        "options": { "timeout": 600000 }
+      }
+    },
+    {
+      "id": "a1000000-0000-4000-8000-000000000013",
+      "name": "Mensaje: cargado",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [2440, -100],
+      "parameters": {
+        "jsCode": "const carga = $('Cargar a la base').first().json.resultados || [];\nconst v = $('Validar (controles SQL)').first().json;\nconst nuevos = carga.filter(r => r.estado === 'cargado');\nconst lineas = nuevos.map(r => `• ${r.archivo}: ${r.filas} filas, ${r.desde} a ${r.hasta}`);\nconst avisos = (v.controles || []).filter(c => c.resultado !== 'ok').map(c => `• ${c.chequeo}: ${c.detalle}`);\nconst texto = [`Carga lista (${v.estado}).`, ...lineas, avisos.length ? 'Para revisar:' : 'Todos los controles en ok.', ...avisos].join('\\n');\nreturn [{ json: { estado: v.estado, paso: 'carga', texto, hay_mes_nuevo: nuevos.some(r => r.archivo.toLowerCase().startsWith('expo')) } }];"
+      }
+    },
+    {
+      "id": "a1000000-0000-4000-8000-000000000014",
+      "name": "Mensaje: falló la validación",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [2220, 100],
+      "parameters": {
+        "jsCode": "const v = $json;\nconst malos = (v.controles || []).filter(c => c.resultado === 'error').map(c => `• ${c.chequeo}: ${c.detalle}`);\nreturn [{ json: { estado: 'error', paso: 'validacion', texto: ['Los datos se cargaron pero NO pasaron la validación. No se exportó nada.', ...malos].join('\\n'), hay_mes_nuevo: false } }];"
+      }
+    },
+    {
+      "id": "a1000000-0000-4000-8000-000000000015",
+      "name": "Mensaje: nada que cargar",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1560, 260],
+      "parameters": {
+        "jsCode": "const fuentes = $('Comparar con lo que ya sabía').all().map(i => i.json);\nconst paginas = $('Sacar fecha y archivos').all().map(i => i.json);\nconst errores = paginas.filter(p => p.error).map(p => `• Catálogo ${p.catalogo}: ${p.error}`);\nconst novedades = fuentes.filter(f => f.hay_novedad && !f.primera_vez);\nlet texto, estado = 'ok';\nif (novedades.length) {\n  estado = 'aviso';\n  texto = ['El DANE actualizó sus microdatos. Descarga el archivo (tiene captcha) y déjalo en datos/crudos:',\n    ...novedades.map(n => `• Catálogo ${n.catalogo} (modificado ${n.modificado}): https://microdatos.dane.gov.co/index.php/catalog/${n.catalogo}/get-microdata` + (n.archivos_nuevos.length ? ` · nuevos: ${n.archivos_nuevos.join(', ')}` : ''))].join('\\n');\n} else {\n  texto = 'Sin novedades: el DANE no ha cambiado los archivos y no hay .zip nuevos en la carpeta.';\n}\nif (errores.length) { estado = 'aviso'; texto += '\\n' + errores.join('\\n'); }\nreturn [{ json: { estado, paso: 'vigilancia', texto, hay_mes_nuevo: false } }];"
+      }
+    },
+    {
+      "id": "a1000000-0000-4000-8000-000000000016",
+      "name": "Registrar corrida",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [2660, 100],
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 3000,
+      "parameters": {
+        "method": "POST",
+        "url": "={{ ($env.PIPELINE_URL || 'http://127.0.0.1:5688') + '/corrida' }}",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ flujo: 'n8n-flujo1', paso: $json.paso, estado: $json.estado, detalle: $json.texto }) }}",
+        "options": { "timeout": 30000 }
+      }
+    },
+    {
+      "id": "a1000000-0000-4000-8000-000000000017",
+      "name": "¿Hay Telegram configurado?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [2880, 100],
+      "parameters": {
+        "conditions": {
+          "options": { "caseSensitive": true, "leftValue": "", "typeValidation": "loose", "version": 2 },
+          "conditions": [
+            {
+              "id": "c1000000-0000-4000-8000-000000000003",
+              "leftValue": "={{ $env.TELEGRAM_TOKEN || '' }}",
+              "rightValue": "",
+              "operator": { "type": "string", "operation": "notEmpty", "singleValue": true }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "a1000000-0000-4000-8000-000000000018",
+      "name": "Avisar por Telegram",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [3100, 0],
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 5000,
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "method": "POST",
+        "url": "={{ 'https://api.telegram.org/bot' + $env.TELEGRAM_TOKEN + '/sendMessage' }}",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ chat_id: $env.TELEGRAM_CHAT_ID, text: 'Comercio exterior · ' + $json.texto }) }}",
+        "options": { "timeout": 30000 }
+      }
+    },
+    {
+      "id": "a1000000-0000-4000-8000-000000000019",
+      "name": "¿Llegó un mes nuevo?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [2660, -260],
+      "parameters": {
+        "conditions": {
+          "options": { "caseSensitive": true, "leftValue": "", "typeValidation": "loose", "version": 2 },
+          "conditions": [
+            {
+              "id": "c1000000-0000-4000-8000-000000000004",
+              "leftValue": "={{ $json.hay_mes_nuevo }}",
+              "rightValue": true,
+              "operator": { "type": "boolean", "operation": "true", "singleValue": true }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "a1000000-0000-4000-8000-000000000020",
+      "name": "Pedir el resumen (flujo 2)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [2880, -260],
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "method": "POST",
+        "url": "={{ ($env.N8N_URL_PROPIA || 'http://127.0.0.1:5678') + '/webhook/ce-resumen' }}",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{}",
+        "options": { "timeout": 30000 }
+      }
+    }
+  ],
+  "connections": {
+    "Cada mañana": { "main": [ [ { "node": "Catálogos del DANE", "type": "main", "index": 0 } ] ] },
+    "A mano (webhook)": { "main": [ [ { "node": "Catálogos del DANE", "type": "main", "index": 0 } ] ] },
+    "Catálogos del DANE": { "main": [ [ { "node": "Leer página del DANE", "type": "main", "index": 0 } ] ] },
+    "Leer página del DANE": { "main": [ [ { "node": "Sacar fecha y archivos", "type": "main", "index": 0 } ] ] },
+    "Sacar fecha y archivos": { "main": [ [ { "node": "Comparar con lo que ya sabía", "type": "main", "index": 0 } ] ] },
+    "Comparar con lo que ya sabía": { "main": [ [ { "node": "Archivos por cargar", "type": "main", "index": 0 } ] ] },
+    "Archivos por cargar": { "main": [ [ { "node": "¿Hay .zip nuevos?", "type": "main", "index": 0 } ] ] },
+    "¿Hay .zip nuevos?": {
+      "main": [
+        [ { "node": "Cargar a la base", "type": "main", "index": 0 } ],
+        [ { "node": "Mensaje: nada que cargar", "type": "main", "index": 0 } ]
+      ]
+    },
+    "Cargar a la base": { "main": [ [ { "node": "Validar (controles SQL)", "type": "main", "index": 0 } ] ] },
+    "Validar (controles SQL)": { "main": [ [ { "node": "¿Pasó la validación?", "type": "main", "index": 0 } ] ] },
+    "¿Pasó la validación?": {
+      "main": [
+        [ { "node": "Exportar agregados", "type": "main", "index": 0 } ],
+        [ { "node": "Mensaje: falló la validación", "type": "main", "index": 0 } ]
+      ]
+    },
+    "Exportar agregados": { "main": [ [ { "node": "Mensaje: cargado", "type": "main", "index": 0 } ] ] },
+    "Mensaje: cargado": {
+      "main": [ [
+        { "node": "Registrar corrida", "type": "main", "index": 0 },
+        { "node": "¿Hay Telegram configurado?", "type": "main", "index": 0 },
+        { "node": "¿Llegó un mes nuevo?", "type": "main", "index": 0 }
+      ] ]
+    },
+    "Mensaje: falló la validación": { "main": [ [
+        { "node": "Registrar corrida", "type": "main", "index": 0 },
+        { "node": "¿Hay Telegram configurado?", "type": "main", "index": 0 }
+    ] ] },
+    "Mensaje: nada que cargar": { "main": [ [
+        { "node": "Registrar corrida", "type": "main", "index": 0 },
+        { "node": "¿Hay Telegram configurado?", "type": "main", "index": 0 }
+    ] ] },
+    "¿Hay Telegram configurado?": { "main": [ [ { "node": "Avisar por Telegram", "type": "main", "index": 0 } ], [] ] },
+    "¿Llegó un mes nuevo?": { "main": [ [ { "node": "Pedir el resumen (flujo 2)", "type": "main", "index": 0 } ], [] ] }
+  },
+  "pinData": {},
+  "meta": { "templateCredsSetupCompleted": true }
+}

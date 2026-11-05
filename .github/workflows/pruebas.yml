@@ -1,0 +1,63 @@
+name: Pruebas
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  python:
+    name: Pipeline y control de la IA (pytest)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - name: Pruebas con datos ficticios
+        run: python -m pytest -v
+      - name: Los agregados publicados cuadran con el boletín del DANE
+        run: python scripts/revisar_publicacion.py
+
+  docker:
+    name: n8n + Postgres + pipeline (docker compose)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Datos ficticios para el pipeline
+        run: python3 scripts/generar_muestra.py
+      - name: Archivo .env de prueba
+        run: |
+          cp .env.example .env
+          sed -i "s/^POSTGRES_PASSWORD=.*/POSTGRES_PASSWORD=solo-para-la-prueba/" .env
+          sed -i "s/^PIPELINE_ARGS=.*/PIPELINE_ARGS=--muestra/" .env
+      - name: Levantar los servicios
+        run: docker compose up -d --build --wait --wait-timeout 300
+      - name: n8n responde
+        run: |
+          # hasta 3 minutos, por si n8n todavía está arrancando
+          for i in $(seq 1 60); do
+            curl -fsS http://127.0.0.1:5678/healthz && exit 0
+            sleep 3
+          done
+          exit 1
+      - name: Importar los 3 flujos en n8n
+        run: |
+          docker compose exec -T n8n n8n import:workflow --separate --input=/flujos
+          docker compose exec -T n8n n8n list:workflow | tee flujos.txt
+          test "$(grep -c 'Comercio exterior' flujos.txt)" -eq 3
+      - name: Cargar y validar los datos ficticios por el pipeline
+        run: |
+          curl -fsS -X POST http://127.0.0.1:5688/pipeline/cargar -H 'Content-Type: application/json' -d '{}'
+          curl -fsS -X POST http://127.0.0.1:5688/pipeline/validar -H 'Content-Type: application/json' -d '{}' | tee validar.json
+          python3 -c "import json; e=json.load(open('validar.json'))['estado']; assert e in ('ok','aviso'), e"
+          curl -fsS "http://127.0.0.1:5688/cifras?periodo=2031-12"
+      - name: Registros si algo falla
+        if: failure()
+        run: docker compose logs --tail 200
+      - name: Apagar
+        if: always()
+        run: docker compose down -v

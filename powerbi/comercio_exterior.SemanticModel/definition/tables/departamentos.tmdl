@@ -1,0 +1,56 @@
+/// Hechos: exportaciones por mes y departamento de origen (fuente: DANE, microdatos EXPO).
+table departamentos
+	lineageTag: fc708240-6849-570d-bfb2-85554ab887df
+
+	/// Primer día del mes.
+	column periodo
+		dataType: dateTime
+		formatString: mmm yyyy
+		lineageTag: 4f6e16d6-af51-5a1b-b5ce-3d917885c734
+		summarizeBy: none
+		sourceColumn: periodo
+
+		annotation SummarizationSetBy = Automatic
+
+	column depto_origen
+		dataType: string
+		isHidden
+		lineageTag: be6bfdba-bf1c-576f-98c7-201c4154241b
+		summarizeBy: none
+		sourceColumn: depto_origen
+
+		annotation SummarizationSetBy = Automatic
+
+	column fob_usd
+		dataType: double
+		formatString: #,0
+		isHidden
+		lineageTag: f3ba1be2-9253-58e7-b63a-5532aa1d283f
+		summarizeBy: sum
+		sourceColumn: fob_usd
+
+		annotation SummarizationSetBy = Automatic
+
+	column kilos_netos
+		dataType: double
+		formatString: #,0
+		isHidden
+		lineageTag: 3eb198b7-cb76-50ef-989f-1bd29848b052
+		summarizeBy: sum
+		sourceColumn: kilos_netos
+
+		annotation SummarizationSetBy = Automatic
+
+	partition departamentos = m
+		mode: import
+		source =
+				let
+				    // Exportaciones por mes y departamento de origen (sale de sql/11_powerbi.sql; las celdas de menos de 3 registros ya vienen en «Otros»)
+				    Origen = Parquet.Document(File.Contents(CarpetaDatos & "powerbi\departamentos.parquet")),
+				    Tipos = Table.TransformColumnTypes(Origen, {{"periodo", type date}, {"depto_origen", type text}, {"fob_usd", type number}, {"kilos_netos", type number}}),
+				    Vacio = Tipos,
+				    SinEspacios = Table.TransformColumns(Vacio, {{"depto_origen", Text.Trim, type text}})
+				in
+				    SinEspacios
+
+	annotation PBI_ResultType = Table

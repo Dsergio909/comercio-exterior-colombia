@@ -1,0 +1,169 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "productos_tabla",
+  "position": {
+    "x": 680.0,
+    "y": 220.0,
+    "z": 6,
+    "height": 464.0,
+    "width": 576.0,
+    "tabOrder": 6
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "Exportaciones (MUSD) · 12 primeros productos"
+                }
+              },
+              "queryRef": "Medidas.Exportaciones (MUSD) · 12 primeros productos",
+              "nativeQueryRef": "Exportaciones (MUSD) · 12 primeros productos",
+              "displayName": "MUSD"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "Variación anual % · 12 primeros productos"
+                }
+              },
+              "queryRef": "Medidas.Variación anual % · 12 primeros productos",
+              "nativeQueryRef": "Variación anual % · 12 primeros productos",
+              "displayName": "Var. anual"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "USD por kilo · 12 primeros productos"
+                }
+              },
+              "queryRef": "Medidas.USD por kilo · 12 primeros productos",
+              "nativeQueryRef": "USD por kilo · 12 primeros productos",
+              "displayName": "USD/kg"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_capitulo"
+                    }
+                  },
+                  "Property": "Producto"
+                }
+              },
+              "queryRef": "dim_capitulo.Producto",
+              "nativeQueryRef": "Producto"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Medidas"
+                  }
+                },
+                "Property": "Exportaciones (MUSD) · 12 primeros productos"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "total": [
+        {
+          "properties": {
+            "totals": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Los 12 primeros: valor y precio por kilo (la variación aparece al elegir un año)'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "11D"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#1f2725'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

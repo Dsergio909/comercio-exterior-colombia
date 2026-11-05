@@ -1,0 +1,84 @@
+/// Cuadre de los totales calculados contra los boletines del DANE.
+table cuadre_boletin
+	lineageTag: 6e1a1f25-7e43-5223-824b-c40ee86c9679
+
+	column Flujo
+		dataType: string
+		lineageTag: f6c6556e-c225-5bf0-9ea7-df346e7dcb0b
+		summarizeBy: none
+		sourceColumn: flujo
+
+		annotation SummarizationSetBy = Automatic
+
+	column Periodo
+		dataType: string
+		lineageTag: 141d4abc-4d69-5d21-aa96-48e540f6fa13
+		summarizeBy: none
+		sourceColumn: periodo
+
+		annotation SummarizationSetBy = Automatic
+
+	column Tipo
+		dataType: string
+		lineageTag: 3f8a6084-897b-5618-bbed-ee8eb53600cf
+		summarizeBy: none
+		sourceColumn: tipo
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Boletín (MUSD)'
+		dataType: double
+		formatString: #,0.0
+		lineageTag: a145dafd-2c0f-55d2-b798-6fb19b47b26b
+		summarizeBy: none
+		sourceColumn: oficial_musd
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Calculado (MUSD)'
+		dataType: double
+		formatString: #,0.0
+		lineageTag: 67266a1e-2010-586b-83c6-498663a5c168
+		summarizeBy: none
+		sourceColumn: calculado_musd
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Diferencia %'
+		dataType: double
+		formatString: 0.00
+		lineageTag: 3fdfabeb-d490-5c4b-a8bb-1a5b788a85df
+		summarizeBy: none
+		sourceColumn: diferencia_pct
+
+		annotation SummarizationSetBy = Automatic
+
+	column Resultado
+		dataType: string
+		lineageTag: 102f7fa4-d78c-5a86-a8a2-306ebce98fde
+		summarizeBy: none
+		sourceColumn: resultado
+
+		annotation SummarizationSetBy = Automatic
+
+	column Fuente
+		dataType: string
+		lineageTag: 379dcdb2-8b5e-5490-8ca4-ba27fe370b0c
+		summarizeBy: none
+		sourceColumn: fuente
+
+		annotation SummarizationSetBy = Automatic
+
+	partition cuadre_boletin = m
+		mode: import
+		source =
+				let
+				    Origen = Csv.Document(File.Contents(CarpetaDatos & "agregados\control_vs_boletin.csv"), [Delimiter = ",", Columns = 8, Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Encabezados = Table.PromoteHeaders(Origen, [PromoteAllScalars = true]),
+				    Tipos = Table.TransformColumnTypes(Encabezados, {{"flujo", type text}, {"periodo", type text}, {"tipo", type text}, {"oficial_musd", type number}, {"calculado_musd", type number}, {"diferencia_pct", type number}, {"resultado", type text}, {"fuente", type text}}, "en-US"),
+				    // Sin las filas de importaciones: esta versión no las carga
+				    Resultado = Table.SelectRows(Tipos, each [resultado] <> "sin datos")
+				in
+				    Resultado
+
+	annotation PBI_ResultType = Table

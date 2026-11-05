@@ -1,0 +1,30 @@
+# Microdatos del DANE: la licencia no permite volver a publicarlos
+datos/crudos/*
+!datos/crudos/LEEME_DESCARGAS.md
+datos/*.duckdb
+datos/*.duckdb.wal
+datos/trabajo/
+
+# Entornos y herramientas locales
+.venv/
+.n8n-app/
+.n8n-datos/
+__pycache__/
+.pytest_cache/
+
+# Claves
+.env
+.env.*
+!.env.example
+
+# Power BI: archivos temporales
+*.pbix.bak
+powerbi/~*
+
+# Datos de prueba: se generan con scripts/generar_muestra.py
+datos/muestra/*.zip
+resumenes/2030-*.md
+resumenes/2031-*.md
+
+# Power BI: caché local con datos y ajustes del PC
+powerbi/**/.pbi/

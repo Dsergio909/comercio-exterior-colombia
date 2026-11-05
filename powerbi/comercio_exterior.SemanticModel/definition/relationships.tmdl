@@ -1,0 +1,31 @@
+relationship 3110e3fa-6f6f-5162-a8d9-02b534d9f693
+	fromColumn: destinos.pais
+	toColumn: dim_pais.codigo
+
+relationship f50bf6c4-2c55-5d92-ada9-9408fc697e49
+	fromColumn: destinos.periodo
+	toColumn: Calendario.Fecha
+
+relationship 57e48526-17f1-5554-a127-9ab9b079721a
+	fromColumn: departamentos.depto_origen
+	toColumn: dim_departamento.codigo
+
+relationship 922551e8-347b-5802-b42b-9eee68894546
+	fromColumn: departamentos.periodo
+	toColumn: Calendario.Fecha
+
+relationship 4e27c2db-db13-56d7-ba5e-b1155cd3df0b
+	fromColumn: logistica.via
+	toColumn: dim_via.codigo
+
+relationship a03f92db-46fc-5485-8f28-3b67a7caddf1
+	fromColumn: logistica.periodo
+	toColumn: Calendario.Fecha
+
+relationship 11e9179a-fe32-5293-8fdc-65af2794d323
+	fromColumn: logistica.capitulo
+	toColumn: dim_capitulo.'Capítulo'
+
+relationship 7a331154-336e-575f-b212-ad1b51123447
+	fromColumn: departamentos_anual.depto_origen
+	toColumn: dim_departamento.codigo

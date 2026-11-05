@@ -1,0 +1,57 @@
+/// Departamentos por año (mismos meses), de datos/agregados/a_departamentos_anual.csv. Solo para la parte minero-energética, que ya sale con reserva (vacía si sale de 1 o 2 registros).
+table departamentos_anual
+	lineageTag: 31a16a4e-830f-5849-b4d7-425870b8ae65
+
+	column anio
+		dataType: int64
+		formatString: 0
+		isHidden
+		lineageTag: 22c5a0a5-7b2d-5959-83e2-39086540b6c4
+		summarizeBy: none
+		sourceColumn: anio
+
+		annotation SummarizationSetBy = Automatic
+
+	column depto_origen
+		dataType: string
+		isHidden
+		lineageTag: be751913-6cf3-58bd-b573-b0d7dd2b19f6
+		summarizeBy: none
+		sourceColumn: depto_origen
+
+		annotation SummarizationSetBy = Automatic
+
+	column fob_musd
+		dataType: double
+		formatString: #,0.0
+		isHidden
+		lineageTag: a1264b7c-d370-5f57-8bb3-4d02361fbc14
+		summarizeBy: sum
+		sourceColumn: fob_musd
+
+		annotation SummarizationSetBy = Automatic
+
+	column fob_sin_minero_energetico_musd
+		dataType: double
+		formatString: #,0.0
+		isHidden
+		lineageTag: 7c0bf77d-0d55-502b-8b5e-cb76d7d56cf4
+		summarizeBy: sum
+		sourceColumn: fob_sin_minero_energetico_musd
+
+		annotation SummarizationSetBy = Automatic
+
+	partition departamentos_anual = m
+		mode: import
+		source =
+				let
+				    Origen = Csv.Document(File.Contents(CarpetaDatos & "agregados\a_departamentos_anual.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Encabezados = Table.PromoteHeaders(Origen, [PromoteAllScalars = true]),
+				    Columnas = Table.SelectColumns(Encabezados, {"anio", "depto_origen", "fob_musd", "fob_sin_minero_energetico_musd"}),
+				    // Vacío = la parte minero-energética sale de 1 o 2 registros (reserva)
+				    Vacios = Table.ReplaceValue(Columnas, "", null, Replacer.ReplaceValue, {"fob_sin_minero_energetico_musd"}),
+				    Resultado = Table.TransformColumnTypes(Vacios, {{"anio", Int64.Type}, {"depto_origen", type text}, {"fob_musd", type number}, {"fob_sin_minero_energetico_musd", type number}}, "en-US")
+				in
+				    Resultado
+
+	annotation PBI_ResultType = Table

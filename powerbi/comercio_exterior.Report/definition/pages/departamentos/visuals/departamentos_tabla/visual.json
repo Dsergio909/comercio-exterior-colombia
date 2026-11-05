@@ -1,0 +1,169 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "departamentos_tabla",
+  "position": {
+    "x": 560.0,
+    "y": 92.0,
+    "z": 5,
+    "height": 592.0,
+    "width": 696.0,
+    "tabOrder": 5
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_departamento"
+                    }
+                  },
+                  "Property": "Departamento"
+                }
+              },
+              "queryRef": "dim_departamento.Departamento",
+              "nativeQueryRef": "Departamento"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "Exportaciones por departamento (MUSD) · 12 primeros departamentos"
+                }
+              },
+              "queryRef": "Medidas.Exportaciones por departamento (MUSD) · 12 primeros departamentos",
+              "nativeQueryRef": "Exportaciones por departamento (MUSD) · 12 primeros departamentos",
+              "displayName": "MUSD"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "Participación por departamento % · 12 primeros departamentos"
+                }
+              },
+              "queryRef": "Medidas.Participación por departamento % · 12 primeros departamentos",
+              "nativeQueryRef": "Participación por departamento % · 12 primeros departamentos",
+              "displayName": "Peso"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "Minero-energético por departamento % · 12 primeros departamentos"
+                }
+              },
+              "queryRef": "Medidas.Minero-energético por departamento % · 12 primeros departamentos",
+              "nativeQueryRef": "Minero-energético por departamento % · 12 primeros departamentos",
+              "displayName": "Minero-energ."
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Medidas"
+                  }
+                },
+                "Property": "Exportaciones por departamento (MUSD) · 12 primeros departamentos"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "total": [
+        {
+          "properties": {
+            "totals": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Los 12 primeros: peso y minería y energía (esta, mismos meses de cada año)'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "11D"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#1f2725'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

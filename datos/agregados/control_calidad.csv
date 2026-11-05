@@ -1,0 +1,10 @@
+chequeo,resultado,detalle
+Archivos cargados,ok,"8 archivos, 3706749 filas"
+Años con más de 1 % del valor sin país confiable,aviso,"2022: 8.1 %, 2024: 32.9 %"
+Años con más de 10 % del valor sin modo de transporte claro,aviso,"2023: 53.7 %, 2024: 48.9 %, 2025: 37.9 %, 2026: 23.5 %"
+Filas sin fecha o sin subpartida (expo),ok,0 filas
+Meses faltantes entre el primero y el último (expo),ok,0 meses
+Totales contra el boletín del DANE (tolerancia 1 %),ok,"13 cuadran, 0 con diferencia, 6 sin datos"
+Valor FOB con departamento de origen sin nombre,ok,0.0 % del valor
+Valor FOB con país sin nombre,aviso,4.97 % del valor
+Valores FOB negativos (expo),ok,0 filas

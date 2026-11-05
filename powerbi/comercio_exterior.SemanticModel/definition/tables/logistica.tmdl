@@ -1,0 +1,65 @@
+/// Hechos: exportaciones por mes, vía de transporte y capítulo (fuente: DANE, microdatos EXPO).
+table logistica
+	lineageTag: 27c93a18-d225-5164-b4fa-2f14c2c40946
+
+	/// Primer día del mes.
+	column periodo
+		dataType: dateTime
+		formatString: mmm yyyy
+		lineageTag: 0261dad2-d2cb-5485-a194-6ab818ee5cb5
+		summarizeBy: none
+		sourceColumn: periodo
+
+		annotation SummarizationSetBy = Automatic
+
+	column via
+		dataType: string
+		isHidden
+		lineageTag: 3116db43-bb36-5c0f-a8e1-a7a375cc5dd4
+		summarizeBy: none
+		sourceColumn: via
+
+		annotation SummarizationSetBy = Automatic
+
+	column capitulo
+		dataType: string
+		isHidden
+		lineageTag: 7b088e84-c8c9-50eb-adcb-93f1a4fdccd4
+		summarizeBy: none
+		sourceColumn: capitulo
+
+		annotation SummarizationSetBy = Automatic
+
+	column fob_usd
+		dataType: double
+		formatString: #,0
+		isHidden
+		lineageTag: dfd9bb96-2b24-5174-8241-8dfe4b5a4f60
+		summarizeBy: sum
+		sourceColumn: fob_usd
+
+		annotation SummarizationSetBy = Automatic
+
+	column kilos_netos
+		dataType: double
+		formatString: #,0
+		isHidden
+		lineageTag: e6f70703-3e32-5ff4-9f18-590e346ba00f
+		summarizeBy: sum
+		sourceColumn: kilos_netos
+
+		annotation SummarizationSetBy = Automatic
+
+	partition logistica = m
+		mode: import
+		source =
+				let
+				    // Exportaciones por mes, vía de transporte y capítulo (sale de sql/11_powerbi.sql; las celdas de menos de 3 registros ya vienen en «Otros»)
+				    Origen = Parquet.Document(File.Contents(CarpetaDatos & "powerbi\logistica.parquet")),
+				    Tipos = Table.TransformColumnTypes(Origen, {{"periodo", type date}, {"via", type text}, {"capitulo", type text}, {"fob_usd", type number}, {"kilos_netos", type number}}),
+				    Vacio = Tipos,
+				    SinEspacios = Table.TransformColumns(Vacio, {{"via", Text.Trim, type text}, {"capitulo", Text.Trim, type text}})
+				in
+				    SinEspacios
+
+	annotation PBI_ResultType = Table

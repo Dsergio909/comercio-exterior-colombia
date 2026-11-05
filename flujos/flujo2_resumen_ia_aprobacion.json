@@ -1,0 +1,627 @@
+{
+  "id": "ceResumenIA00001",
+  "name": "Comercio exterior 2 · Resumen con IA local y aprobación",
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "errorWorkflow": "ceAvisoError0001",
+    "timezone": "America/Bogota",
+    "saveManualExecutions": true
+  },
+  "nodes": [
+    {
+      "id": "b2000000-0000-4000-8000-000000000001",
+      "name": "Pedir resumen (webhook)",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "webhookId": "5d0e6b8e-1c1a-4f3e-9a52-ce0000000002",
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "ce-resumen",
+        "responseMode": "onReceived",
+        "options": {}
+      }
+    },
+    {
+      "id": "b2000000-0000-4000-8000-000000000002",
+      "name": "Cifras del mes (SQL)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        220,
+        0
+      ],
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 3000,
+      "parameters": {
+        "url": "={{ ($env.PIPELINE_URL || 'http://127.0.0.1:5688') + '/cifras' }}",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "periodo",
+              "value": "={{ ($json.body && $json.body.periodo) || '' }}"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 60000
+        }
+      }
+    },
+    {
+      "id": "b2000000-0000-4000-8000-000000000003",
+      "name": "Armar instrucciones",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        440,
+        0
+      ],
+      "parameters": {
+        "jsCode": "const c = $json;\nconst meses = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];\nconst [anio, mes] = c.periodo.split('-').map(Number);\nconst fmt = v => v === null || v === undefined ? 'sin dato' : v.toLocaleString('es-CO', { minimumFractionDigits: 1, maximumFractionDigits: 1 }).replace(/\\u00a0/g, ' ');\nconst lineas = c.cifras.filter(f => f.valor !== null).map(f => `- ${f.etiqueta}: ${fmt(f.valor)}${f.unidad === '%' ? ' %' : ' millones de dólares FOB'}`);\nconst sistema = [\n  'Eres analista de comercio exterior y escribes para un tablero público.',\n  'Escribe en español de Colombia un resumen de 4 a 6 frases cortas sobre las exportaciones del mes.',\n  'Reglas obligatorias:',\n  '1. Usa SOLO las cifras de la lista, copiadas tal cual (coma para decimales, punto para miles).',\n  '2. No calcules, no redondees distinto y no inventes cifras, porcentajes ni causas.',\n  `3. Los únicos años que puedes escribir son ${anio - 1} y ${anio}. No escribas otros números (ni posiciones como \"5 destinos\").`,\n  '4. Si una variación es negativa, di que cayó y escribe el número sin el signo menos.',\n  '5. Sin títulos, sin viñetas, sin adjetivos de relleno. Solo texto.',\n  '6. Menciona el destino o el producto con la variación anual más grande de la lista, con su cifra.'\n].join('\\n');\nconst usuario = `Mes: ${meses[mes - 1]} de ${anio}\\nCifras (fuente: DANE):\\n${lineas.join('\\n')}`;\nreturn [{ json: { periodo: c.periodo, sistema, usuario, modelo: $env.OLLAMA_MODELO || 'qwen3.5:9b', intento: 1 } }];"
+      }
+    },
+    {
+      "id": "b2000000-0000-4000-8000-000000000004",
+      "name": "IA local (Ollama)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        660,
+        0
+      ],
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 10000,
+      "parameters": {
+        "method": "POST",
+        "url": "={{ ($env.OLLAMA_URL || 'http://127.0.0.1:11434') + '/api/generate' }}",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ model: $json.modelo, system: $json.sistema, prompt: $json.usuario, stream: false, think: false, keep_alive: '2m', options: { temperature: 0.1, num_ctx: 4096 } }) }}",
+        "options": {
+          "timeout": 900000
+        }
+      }
+    },
+    {
+      "id": "b2000000-0000-4000-8000-000000000005",
+      "name": "Guardar y revisar números",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        880,
+        0
+      ],
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 3000,
+      "parameters": {
+        "method": "POST",
+        "url": "={{ ($env.PIPELINE_URL || 'http://127.0.0.1:5688') + '/resumen/guardar' }}",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ periodo: $('Armar instrucciones').first().json.periodo, modelo: $('Armar instrucciones').first().json.modelo, texto: String($json.response || '').replace(/<think>[\\s\\S]*?<\\/think>/g, '').trim() }) }}",
+        "options": {
+          "timeout": 60000
+        }
+      }
+    },
+    {
+      "id": "b2000000-0000-4000-8000-000000000006",
+      "name": "¿Todos los números tienen fuente?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1100,
+        0
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "d2000000-0000-4000-8000-000000000001",
+              "leftValue": "={{ $json.pasa }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "b2000000-0000-4000-8000-000000000007",
+      "name": "Pedirle a la IA que corrija",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1320,
+        160
+      ],
+      "parameters": {
+        "jsCode": "const base = $('Armar instrucciones').first().json;\nconst previo = $('IA local (Ollama)').first().json.response || '';\nconst malos = $json.sin_fuente || [];\nconst frases = $json.frases_dudosas || [];\nconst problemas = [];\nif (malos.length) problemas.push(`Estos números NO están en la lista: ${malos.join(', ')}.`);\nif (frases.length) problemas.push(`No digas que algo no tuvo exportaciones (${frases.join(', ')}): la lista solo trae lo que sí se exportó.`);\nconst usuario = base.usuario + `\\n\\nTu resumen anterior fue:\\n${previo}\\n\\n${problemas.join(' ')} Reescribe el resumen usando solo las cifras de la lista.`;\nreturn [{ json: { ...base, usuario, intento: 2 } }];"
+      }
+    },
+    {
+      "id": "b2000000-0000-4000-8000-000000000008",
+      "name": "IA local, segundo intento",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1540,
+        160
+      ],
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 10000,
+      "parameters": {
+        "method": "POST",
+        "url": "={{ ($env.OLLAMA_URL || 'http://127.0.0.1:11434') + '/api/generate' }}",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ model: $json.modelo, system: $json.sistema, prompt: $json.usuario, stream: false, think: false, keep_alive: '2m', options: { temperature: 0.1, num_ctx: 4096 } }) }}",
+        "options": {
+          "timeout": 900000
+        }
+      }
+    },
+    {
+      "id": "b2000000-0000-4000-8000-000000000009",
+      "name": "Guardar segundo intento",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1760,
+        160
+      ],
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 3000,
+      "parameters": {
+        "method": "POST",
+        "url": "={{ ($env.PIPELINE_URL || 'http://127.0.0.1:5688') + '/resumen/guardar' }}",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ periodo: $('Armar instrucciones').first().json.periodo, modelo: $('Armar instrucciones').first().json.modelo, texto: String($json.response || '').replace(/<think>[\\s\\S]*?<\\/think>/g, '').trim() }) }}",
+        "options": {
+          "timeout": 60000
+        }
+      }
+    },
+    {
+      "id": "b2000000-0000-4000-8000-000000000010",
+      "name": "Preparar aprobación",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1980,
+        0
+      ],
+      "parameters": {
+        "jsCode": "const r = $json;\nconst texto = r.intento_texto || '';\nconst control = r.pasa\n  ? `Control automático: los ${r.revisados} números del texto están en los datos.`\n  : `Control automático: NO pasa.${r.sin_fuente.length ? ' Números sin fuente: ' + r.sin_fuente.join(', ') + '.' : ''}${(r.frases_dudosas || []).length ? ' Frases que dicen que algo no se exportó: ' + r.frases_dudosas.join(', ') + '.' : ''} Corrígelo o recházalo.`;\nreturn [{ json: { id: r.id, periodo: r.periodo, pasa: r.pasa, control, form_url: $execution.resumeFormUrl, paso: 'esperando aprobación', estado: r.pasa ? 'ok' : 'aviso' } }];"
+      }
+    },
+    {
+      "id": "b2000000-0000-4000-8000-000000000011",
+      "name": "Leer texto guardado",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2200,
+        0
+      ],
+      "parameters": {
+        "jsCode": "// El texto que se muestra para aprobar es el que quedó guardado en la base.\nconst p = $json;\nconst ia = $('IA local, segundo intento').isExecuted ? $('IA local, segundo intento').first().json.response : $('IA local (Ollama)').first().json.response;\nconst texto = String(ia || '').replace(/<think>[\\s\\S]*?<\\/think>/g, '').trim();\nreturn [{ json: { ...p, texto, texto_aviso: `Resumen ${p.periodo} (id ${p.id}) listo para revisar.\\n${p.control}\\nAprobar o corregir aquí: ${p.form_url}` } }];"
+      }
+    },
+    {
+      "id": "b2000000-0000-4000-8000-000000000012",
+      "name": "Registrar: esperando a Sergio",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2420,
+        0
+      ],
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 3000,
+      "parameters": {
+        "method": "POST",
+        "url": "={{ ($env.PIPELINE_URL || 'http://127.0.0.1:5688') + '/corrida' }}",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ flujo: 'n8n-flujo2', paso: 'esperando aprobación', estado: $json.estado, detalle: $json.texto_aviso }) }}",
+        "options": {
+          "timeout": 30000
+        }
+      }
+    },
+    {
+      "id": "b2000000-0000-4000-8000-000000000013",
+      "name": "¿Hay Telegram configurado?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2420,
+        200
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "d2000000-0000-4000-8000-000000000002",
+              "leftValue": "={{ $env.TELEGRAM_TOKEN || '' }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "b2000000-0000-4000-8000-000000000014",
+      "name": "Avisar por Telegram",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2640,
+        200
+      ],
+      "onError": "continueRegularOutput",
+      "parameters": {
+        "method": "POST",
+        "url": "={{ 'https://api.telegram.org/bot' + $env.TELEGRAM_TOKEN + '/sendMessage' }}",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ chat_id: $env.TELEGRAM_CHAT_ID, text: $json.texto_aviso }) }}",
+        "options": {
+          "timeout": 30000
+        }
+      }
+    },
+    {
+      "id": "b2000000-0000-4000-8000-000000000015",
+      "name": "Esperar la decisión de Sergio",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2640,
+        0
+      ],
+      "webhookId": "5d0e6b8e-1c1a-4f3e-9a52-ce0000000003",
+      "parameters": {
+        "resume": "form",
+        "formTitle": "={{ 'Resumen de exportaciones · ' + $('Leer texto guardado').first().json.periodo }}",
+        "formDescription": "={{ $('Leer texto guardado').first().json.texto + '\\n\\n' + $('Leer texto guardado').first().json.control }}",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Decisión",
+              "fieldType": "dropdown",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "Aprobar"
+                  },
+                  {
+                    "option": "Corregir"
+                  },
+                  {
+                    "option": "Rechazar"
+                  }
+                ]
+              },
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Texto corregido (solo si eliges Corregir)",
+              "fieldType": "textarea"
+            },
+            {
+              "fieldLabel": "Comentario",
+              "fieldType": "text"
+            }
+          ]
+        },
+        "limitWaitTime": true,
+        "limitType": "afterTimeInterval",
+        "resumeAmount": 7,
+        "resumeUnit": "days",
+        "options": {
+          "appendAttribution": false,
+          "respondWithOptions": {
+            "values": {
+              "respondWith": "text",
+              "formSubmittedText": "Decisión guardada. Si aprobaste o corregiste, el resumen pasa otra vez por el control de números antes de publicarse."
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "b2000000-0000-4000-8000-000000000016",
+      "name": "Traducir decisión",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2860,
+        0
+      ],
+      "parameters": {
+        "jsCode": "const f = $json;\nconst mapa = { 'Aprobar': 'aprobado', 'Corregir': 'corregido', 'Rechazar': 'rechazado' };\nconst decision = mapa[f['Decisión']] || 'rechazado';\nconst comentario = f['Comentario'] || (f['Decisión'] ? '' : 'Venció el plazo de 7 días sin respuesta');\nreturn [{ json: { id: $('Leer texto guardado').first().json.id, decision, texto_final: f['Texto corregido (solo si eliges Corregir)'] || '', comentario } }];"
+      }
+    },
+    {
+      "id": "b2000000-0000-4000-8000-000000000017",
+      "name": "Guardar decisión",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3080,
+        0
+      ],
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 3000,
+      "parameters": {
+        "method": "POST",
+        "url": "={{ ($env.PIPELINE_URL || 'http://127.0.0.1:5688') + '/resumen/decidir' }}",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json) }}",
+        "options": {
+          "timeout": 60000
+        }
+      }
+    },
+    {
+      "id": "b2000000-0000-4000-8000-000000000018",
+      "name": "Registrar decisión",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3300,
+        0
+      ],
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 3000,
+      "parameters": {
+        "method": "POST",
+        "url": "={{ ($env.PIPELINE_URL || 'http://127.0.0.1:5688') + '/corrida' }}",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ flujo: 'n8n-flujo2', paso: 'decisión', estado: $json.ok ? 'ok' : 'aviso', detalle: JSON.stringify({ decision: $('Traducir decisión').first().json.decision, resultado: $json }) }) }}",
+        "options": {
+          "timeout": 30000
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Pedir resumen (webhook)": {
+      "main": [
+        [
+          {
+            "node": "Cifras del mes (SQL)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cifras del mes (SQL)": {
+      "main": [
+        [
+          {
+            "node": "Armar instrucciones",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Armar instrucciones": {
+      "main": [
+        [
+          {
+            "node": "IA local (Ollama)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IA local (Ollama)": {
+      "main": [
+        [
+          {
+            "node": "Guardar y revisar números",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Guardar y revisar números": {
+      "main": [
+        [
+          {
+            "node": "¿Todos los números tienen fuente?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "¿Todos los números tienen fuente?": {
+      "main": [
+        [
+          {
+            "node": "Preparar aprobación",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Pedirle a la IA que corrija",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pedirle a la IA que corrija": {
+      "main": [
+        [
+          {
+            "node": "IA local, segundo intento",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IA local, segundo intento": {
+      "main": [
+        [
+          {
+            "node": "Guardar segundo intento",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Guardar segundo intento": {
+      "main": [
+        [
+          {
+            "node": "Preparar aprobación",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Preparar aprobación": {
+      "main": [
+        [
+          {
+            "node": "Leer texto guardado",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Leer texto guardado": {
+      "main": [
+        [
+          {
+            "node": "Registrar: esperando a Sergio",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "¿Hay Telegram configurado?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Registrar: esperando a Sergio": {
+      "main": [
+        [
+          {
+            "node": "Esperar la decisión de Sergio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "¿Hay Telegram configurado?": {
+      "main": [
+        [
+          {
+            "node": "Avisar por Telegram",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    },
+    "Esperar la decisión de Sergio": {
+      "main": [
+        [
+          {
+            "node": "Traducir decisión",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Traducir decisión": {
+      "main": [
+        [
+          {
+            "node": "Guardar decisión",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Guardar decisión": {
+      "main": [
+        [
+          {
+            "node": "Registrar decisión",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": true
+  }
+}
